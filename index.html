@@ -25,17 +25,22 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
   background:var(--panel); border:1px solid #1f2937; border-radius:var(--radius);
   padding:22px; display:flex; flex-direction:column; gap:14px;
 }
-.headrow{display:flex; align-items:flex-end; justify-content:space-between; gap:12px}
-.title{font-size:18px; font-weight:800; white-space:nowrap}
-.prices{display:grid; gap:8px; text-align:right}
+.headrow{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+.title{
+  font-size:22px; font-weight:900; letter-spacing:.2px; white-space:nowrap;
+}
+.prices{display:grid; gap:6px; text-align:right; min-width:210px}
 .price{display:flex; align-items:flex-end; gap:8px; justify-content:flex-end}
-.amt{font-size:28px; font-weight:900; letter-spacing:.2px}
+.amt{font-size:28px; font-weight:900}
 .per{color:var(--muted); font-size:14px}
 .note{color:var(--muted); font-size:12px; margin-top:-2px}
 
 .divider{height:1px; background:#223047; margin:8px 0 2px}
 
 .features{display:grid; gap:8px}
+.features .desc{color:#c9cfd8; font-size:14px}
 .features ul{list-style:none; margin:0; padding:0; display:grid; gap:8px}
 .features li{display:flex; align-items:flex-start; gap:10px; color:#d3d8df}
 .chk{width:18px; height:18px; border-radius:4px; display:inline-grid; place-items:center; background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.3); font-size:12px}
@@ -49,8 +54,10 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 .btn.primary{background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#0b1220; border-color:transparent}
 .btn[disabled]{opacity:.55; cursor:not-allowed}
 
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(14,165,233,.12);color:#7dd3fc;border:1px solid var(--ring);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.3px;text-transform:uppercase}
+.card.featured{border-color:var(--brand-2);box-shadow:0 0 0 3px rgba(14,165,233,.22)}
+
 .fine{color:#a3aab6; font-size:12px; margin-top:14px}
-.small{font-weight:700; font-size:12px; opacity:.9}
 </style>
 </head>
 <body>
@@ -64,133 +71,3 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
       <div class="headrow">
         <div class="title">Starter — Free</div>
         <div class="prices">
-          <div class="price"><span class="amt">$0</span><span class="per">/mo</span></div>
-          <div class="note">Ad-supported</div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="features">
-        <ul>
-          <li><span class="chk">✓</span> Ad-supported access</li>
-          <li><span class="chk">✓</span> 24-hour delay on FX &amp; Stock signals</li>
-        </ul>
-      </div>
-
-      <div class="actions">
-        <a class="btn primary" href="https://buy.stripe.com/YOUR_STARTER_CTA" target="_blank" rel="noopener">Get Started</a>
-      </div>
-    </article>
-
-    <!-- Access -->
-    <article class="card" role="listitem" aria-label="Access plan">
-      <div class="headrow">
-        <div class="title">Access</div>
-        <div class="prices">
-          <!-- Annualized monthly first (highlighted copy sits in button, not here) -->
-          <div>
-            <div class="price"><span class="amt">$16.99</span><span class="per">/mo</span></div>
-            <div class="note">12 months billed annually</div>
-          </div>
-          <div>
-            <div class="price"><span class="amt">$19.99</span><span class="per">/mo</span></div>
-            <div class="note">billed monthly</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="features">
-        <div class="small" style="color:#c9cfd8">Suitable for beginners. Adds transparency through weekly reports—rare among competitors.</div>
-        <ul>
-          <li><span class="chk">✓</span> No ads</li>
-          <li><span class="chk">✓</span> FX + U.S. Core Indices signals (SPY, QQQ, DIA, IWM)</li>
-          <li><span class="chk">✓</span> Weekly performance report &amp; Daily “Top 3 Signals” digest</li>
-        </ul>
-      </div>
-
-      <div class="actions">
-        <!-- Access exception: single CTA only -->
-        <a class="btn primary" href="https://buy.stripe.com/YOUR_ACCESS_CTA" target="_blank" rel="noopener">Get Started</a>
-      </div>
-    </article>
-
-    <!-- Pro -->
-    <article class="card" role="listitem" aria-label="Pro plan">
-      <div class="headrow">
-        <div class="title">Pro</div>
-        <div class="prices">
-          <div>
-            <div class="price"><span class="amt">$29.99</span><span class="per">/mo</span></div>
-            <div class="note">12 months billed annually</div>
-          </div>
-          <div>
-            <div class="price"><span class="amt">$34.99</span><span class="per">/mo</span></div>
-            <div class="note">billed monthly</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="features">
-        <div class="small" style="color:#c9cfd8">Expanded asset coverage + dashboards—one-stop resource for intermediate traders seeking diversification.</div>
-        <ul>
-          <li><span class="chk">✓</span> Includes all <strong>Access</strong> features</li>
-          <li><span class="chk">✓</span> Sector ETFs + International ETFs (EFA, EEM, FXI)</li>
-          <li><span class="chk">✓</span> Crypto signals (Bitcoin only)</li>
-          <li><span class="chk">✓</span> Advanced weekly reports + Sector Heatmap Dashboard</li>
-        </ul>
-      </div>
-
-      <div class="actions">
-        <!-- Yearly on top & highlighted -->
-        <a class="btn primary" href="https://buy.stripe.com/YOUR_PRO_YEARLY" target="_blank" rel="noopener">Subscribe Yearly ($29.99/mo × 12)</a>
-        <a class="btn" href="https://buy.stripe.com/YOUR_PRO_MONTHLY" target="_blank" rel="noopener">Subscribe Monthly ($34.99/mo)</a>
-      </div>
-    </article>
-
-    <!-- Master -->
-    <article class="card" role="listitem" aria-label="Master plan">
-      <div class="headrow">
-        <div class="title">Master</div>
-        <div class="prices">
-          <div>
-            <div class="price"><span class="amt">$49.99</span><span class="per">/mo</span></div>
-            <div class="note">12 months billed annually</div>
-          </div>
-          <div>
-            <div class="price"><span class="amt">$59.99</span><span class="per">/mo</span></div>
-            <div class="note">billed monthly</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="features">
-        <div class="small" style="color:#c9cfd8">Pro-grade analytics, cross-asset global coverage, and expanded Crypto access.</div>
-        <ul>
-          <li><span class="chk">✓</span> Includes all <strong>Pro</strong> features</li>
-          <li><span class="chk">✓</span> Adds Commodities, Bonds, and Thematic ETFs</li>
-          <li><span class="chk">✓</span> Crypto Top 10 signals</li>
-          <li><span class="chk">✓</span> Full Performance Suite (drawdowns, holding time, distribution analysis)</li>
-          <li><span class="chk">✓</span> AI-generated insights</li>
-        </ul>
-      </div>
-
-      <div class="actions">
-        <!-- Yearly on top & highlighted -->
-        <a class="btn primary" href="https://buy.stripe.com/YOUR_MASTER_YEARLY" target="_blank" rel="noopener">Subscribe Yearly ($49.99/mo × 12)</a>
-        <a class="btn" href="https://buy.stripe.com/YOUR_MASTER_MONTHLY" target="_blank" rel="noopener">Subscribe Monthly ($59.99/mo)</a>
-      </div>
-    </article>
-
-  </div>
-
-  <p class="fine">Prices in USD. Cancel anytime.</p>
-</div>
-</body>
-</html>
