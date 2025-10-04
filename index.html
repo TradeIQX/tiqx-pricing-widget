@@ -33,7 +33,8 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
   display:flex; justify-content:center; gap:28px; align-items:flex-end; flex-wrap:wrap; text-align:center;
 }
 .price{display:flex; align-items:flex-end; gap:6px; justify-content:center}
-.amt{font-size:28px; font-weight:900}
+.price-block .amt{font-size:28px; font-weight:900}
+.price-block.monthly .amt{font-weight:400;} /* monthly (billed monthly) NOT bold */
 .per{color:var(--muted); font-size:14px}
 .note{color:var(--muted); font-size:12px; margin-top:-2px}
 
@@ -44,15 +45,24 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 .features ul{list-style:none; margin:0; padding:0; display:grid; gap:8px}
 .features li{display:flex; align-items:flex-start; gap:10px; color:#d3d8df}
 .chk{width:18px; height:18px; border-radius:4px; display:inline-grid; place-items:center; background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.3); font-size:12px}
-.chk.ghost{visibility:hidden} /* preserves alignment without showing a box */
 
 .actions{display:grid; gap:10px; margin-top:auto}
+
+/* Buttons */
 .btn{
   display:inline-grid; place-items:center; padding:12px 14px; border-radius:10px;
-  border:1px solid #223047; background:#0f172a; font-weight:800;
+  background:#0f172a; border:1px solid #223047; font-weight:800;
 }
 .btn:hover{outline:2px solid var(--ring)}
-.btn.primary{background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#0b1220; border-color:transparent}
+
+/* Yearly: same bg as monthly, thin gradient BORDER (no fill) */
+.btn.primary{
+  border:1px solid transparent;
+  background:
+    linear-gradient(#0f172a,#0f172a) padding-box,
+    linear-gradient(180deg,var(--brand),var(--brand-2)) border-box;
+  color:var(--text);
+}
 .btn[disabled]{opacity:.55; cursor:not-allowed}
 
 .badge{
@@ -76,7 +86,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
       <div class="tiername">Starter</div>
 
       <div class="prices" aria-label="Starter pricing">
-        <div>
+        <div class="price-block annual">
           <div class="price"><span class="amt">$0</span><span class="per">/mo</span></div>
           <div class="note">Ad-supported</div>
         </div>
@@ -102,11 +112,11 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
       <div class="tiername">Access</div>
 
       <div class="prices" aria-label="Access pricing">
-        <div>
+        <div class="price-block annual">
           <div class="price"><span class="amt">$16.99</span><span class="per">/mo</span></div>
           <div class="note">12 months billed annually</div>
         </div>
-        <div>
+        <div class="price-block monthly">
           <div class="price"><span class="amt">$19.99</span><span class="per">/mo</span></div>
           <div class="note">billed monthly</div>
         </div>
@@ -124,6 +134,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
       </div>
 
       <div class="actions">
+        <!-- Yearly first & highlighted; Monthly second -->
         <a class="btn primary" href="https://buy.stripe.com/YOUR_ACCESS_YEARLY" target="_blank" rel="noopener">Subscribe Yearly</a>
         <a class="btn" href="https://buy.stripe.com/YOUR_ACCESS_MONTHLY" target="_blank" rel="noopener">Subscribe Monthly</a>
       </div>
@@ -135,11 +146,11 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
       <span class="badge">Popular</span>
 
       <div class="prices" aria-label="Pro pricing">
-        <div>
+        <div class="price-block annual">
           <div class="price"><span class="amt">$29.99</span><span class="per">/mo</span></div>
           <div class="note">12 months billed annually</div>
         </div>
-        <div>
+        <div class="price-block monthly">
           <div class="price"><span class="amt">$34.99</span><span class="per">/mo</span></div>
           <div class="note">billed monthly</div>
         </div>
@@ -150,7 +161,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
       <div class="features">
         <div class="desc">Built for active traders. Expands market coverage and insight depth with sector, international, and Bitcoin signals.</div>
         <ul>
-          <li><span class="chk ghost"></span><strong>Includes all Access features PLUS:</strong></li>
+          <li><span class="chk">✓</span><strong> Includes all Access features PLUS:</strong></li>
           <li><span class="chk">✓</span> Major Sector ETFs + Major International ETFs</li>
           <li><span class="chk">✓</span> Crypto signals (Bitcoin only)</li>
           <li><span class="chk">✓</span> Advanced weekly reports + Sector Heatmap Dashboard</li>
@@ -168,11 +179,11 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
       <div class="tiername">Master</div>
 
       <div class="prices" aria-label="Master pricing">
-        <div>
+        <div class="price-block annual">
           <div class="price"><span class="amt">$49.99</span><span class="per">/mo</span></div>
           <div class="note">12 months billed annually</div>
         </div>
-        <div>
+        <div class="price-block monthly">
           <div class="price"><span class="amt">$59.99</span><span class="per">/mo</span></div>
           <div class="note">billed monthly</div>
         </div>
@@ -183,7 +194,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
       <div class="features">
         <div class="desc">Built for committed traders. Expands analytics and maximizes cross-asset coverage for sharper, more confident decision making.</div>
         <ul>
-          <li><span class="chk ghost"></span><strong>Includes all Pro features PLUS:</strong></li>
+          <li><span class="chk">✓</span><strong> Includes all Pro features PLUS:</strong></li>
           <li><span class="chk">✓</span> Major Commodities ETFs</li>
           <li><span class="chk">✓</span> Major Bond ETFs</li>
           <li><span class="chk">✓</span> Crypto signals: BTC, ETH + major coins (e.g., BNB, SOL, XRP, ADA, LTC)</li>
