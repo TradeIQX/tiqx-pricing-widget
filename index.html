@@ -15,7 +15,7 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,Seg
 a{color:inherit;text-decoration:none}
 
 .wrap{max-width:1100px;margin:0 auto;padding:40px 20px}
-h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
+h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
 @media (max-width:980px){.grid{grid-template-columns:1fr 1fr}}
@@ -27,9 +27,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 }
 .card.featured{border-color:var(--brand-2);box-shadow:0 0 0 3px rgba(14,165,233,.22)}
 
-.tiername{
-  text-align:center; font-size:24px; font-weight:900; letter-spacing:.2px;
-}
+.tiername{ text-align:center; font-size:24px; font-weight:900; letter-spacing:.2px; }
 
 .prices{
   display:flex; justify-content:center; gap:28px; align-items:flex-end; flex-wrap:wrap; text-align:center;
@@ -46,12 +44,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 .features ul{list-style:none; margin:0; padding:0; display:grid; gap:8px}
 .features li{display:flex; align-items:flex-start; gap:10px; color:#d3d8df}
 .chk{width:18px; height:18px; border-radius:4px; display:inline-grid; place-items:center; background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.3); font-size:12px}
-
-/* unbulleted subline for "Includes all ... PLUS:" */
-.subline{
-  text-align:center; font-weight:800; color:#dbe2ea; padding:8px 10px; border:1px dashed #2a3a55;
-  border-radius:8px; background:rgba(14,165,233,.06);
-}
+.chk.ghost{visibility:hidden} /* preserves alignment without showing a box */
 
 .actions{display:grid; gap:10px; margin-top:auto}
 .btn{
@@ -78,9 +71,9 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 
   <div class="grid" role="list">
 
-    <!-- Starter — Free -->
+    <!-- Starter -->
     <article class="card" role="listitem" aria-label="Starter plan">
-      <div class="tiername">Starter — Free</div>
+      <div class="tiername">Starter</div>
 
       <div class="prices" aria-label="Starter pricing">
         <div>
@@ -92,6 +85,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
       <div class="divider"></div>
 
       <div class="features">
+        <div class="desc">Ideal for exploring. Experience TradeIQX with delayed data—risk-free and ad-supported.</div>
         <ul>
           <li><span class="chk">✓</span> Ad-supported access</li>
           <li><span class="chk">✓</span> 24-hour delay on FX &amp; Stock signals</li>
@@ -154,9 +148,10 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
       <div class="divider"></div>
 
       <div class="features">
-        <div class="subline">Includes all Access features <strong>PLUS:</strong></div>
+        <div class="desc">Built for active traders. Expands market coverage and insight depth with sector, international, and Bitcoin signals.</div>
         <ul>
-          <li><span class="chk">✓</span> Sector ETFs (XLK, XLE, XLF, XLV, XLY) + International ETFs (EFA, EEM, FXI)</li>
+          <li><span class="chk ghost"></span><strong>Includes all Access features PLUS:</strong></li>
+          <li><span class="chk">✓</span> Major Sector ETFs + Major International ETFs</li>
           <li><span class="chk">✓</span> Crypto signals (Bitcoin only)</li>
           <li><span class="chk">✓</span> Advanced weekly reports + Sector Heatmap Dashboard</li>
         </ul>
@@ -186,11 +181,12 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
       <div class="divider"></div>
 
       <div class="features">
-        <div class="subline">Includes all Pro features <strong>PLUS:</strong></div>
+        <div class="desc">Built for committed traders. Expands analytics and maximizes cross-asset coverage for sharper, more confident decision making.</div>
         <ul>
-          <li><span class="chk">✓</span> Commodities ETFs: GLD, SLV, USO, PDBC, GDMN</li>
-          <li><span class="chk">✓</span> Bond ETFs: BND, AGG, LQD, BNDX, VCIT, TLT, HYG, TIP, SHV</li>
-          <li><span class="chk">✓</span> Crypto signals: BTC, ETH + majors (BNB, SOL, XRP, ADA, LTC)</li>
+          <li><span class="chk ghost"></span><strong>Includes all Pro features PLUS:</strong></li>
+          <li><span class="chk">✓</span> Major Commodities ETFs</li>
+          <li><span class="chk">✓</span> Major Bond ETFs</li>
+          <li><span class="chk">✓</span> Crypto signals: BTC, ETH + major coins (e.g., BNB, SOL, XRP, ADA, LTC)</li>
           <li><span class="chk">✓</span> Full Performance Suite (drawdowns, holding time, distribution analysis)</li>
           <li><span class="chk">✓</span> AI-generated insights</li>
         </ul>
