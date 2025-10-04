@@ -25,14 +25,22 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
   background:var(--panel); border:1px solid #1f2937; border-radius:var(--radius);
   padding:22px; display:flex; flex-direction:column; gap:14px;
 }
-.headrow{
-  display:flex; align-items:center; justify-content:space-between; gap:12px;
+.card.featured{border-color:var(--brand-2);box-shadow:0 0 0 3px rgba(14,165,233,.22)}
+
+.tiername{
+  text-align:center; font-size:24px; font-weight:900; letter-spacing:.2px;
 }
-.title{
-  font-size:22px; font-weight:900; letter-spacing:.2px; white-space:nowrap;
+.badge{
+  display:inline-flex; align-items:center; gap:6px; background:rgba(14,165,233,.12);
+  color:#7dd3fc; border:1px solid var(--ring); padding:6px 10px; border-radius:999px;
+  font-size:12px; font-weight:800; letter-spacing:.3px; text-transform:uppercase;
+  margin:0 auto; /* center */
 }
-.prices{display:grid; gap:6px; text-align:right; min-width:210px}
-.price{display:flex; align-items:flex-end; gap:8px; justify-content:flex-end}
+
+.prices{
+  display:flex; justify-content:center; gap:28px; align-items:flex-end; flex-wrap:wrap; text-align:center;
+}
+.price{display:flex; align-items:flex-end; gap:6px; justify-content:center}
 .amt{font-size:28px; font-weight:900}
 .per{color:var(--muted); font-size:14px}
 .note{color:var(--muted); font-size:12px; margin-top:-2px}
@@ -40,7 +48,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 .divider{height:1px; background:#223047; margin:8px 0 2px}
 
 .features{display:grid; gap:8px}
-.features .desc{color:#c9cfd8; font-size:14px}
+.features .desc{color:#c9cfd8; font-size:14px; text-align:center}
 .features ul{list-style:none; margin:0; padding:0; display:grid; gap:8px}
 .features li{display:flex; align-items:flex-start; gap:10px; color:#d3d8df}
 .chk{width:18px; height:18px; border-radius:4px; display:inline-grid; place-items:center; background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.3); font-size:12px}
@@ -54,10 +62,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 .btn.primary{background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#0b1220; border-color:transparent}
 .btn[disabled]{opacity:.55; cursor:not-allowed}
 
-.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(14,165,233,.12);color:#7dd3fc;border:1px solid var(--ring);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.3px;text-transform:uppercase}
-.card.featured{border-color:var(--brand-2);box-shadow:0 0 0 3px rgba(14,165,233,.22)}
-
-.fine{color:#a3aab6; font-size:12px; margin-top:14px}
+.fine{color:#a3aab6; font-size:12px; margin-top:14px; text-align:center}
 </style>
 </head>
 <body>
@@ -68,9 +73,10 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 
     <!-- Starter — Free -->
     <article class="card" role="listitem" aria-label="Starter plan">
-      <div class="headrow">
-        <div class="title">Starter — Free</div>
-        <div class="prices">
+      <div class="tiername">Starter — Free</div>
+
+      <div class="prices" aria-label="Starter pricing">
+        <div>
           <div class="price"><span class="amt">$0</span><span class="per">/mo</span></div>
           <div class="note">Ad-supported</div>
         </div>
@@ -92,19 +98,16 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 
     <!-- Access -->
     <article class="card" role="listitem" aria-label="Access plan">
-      <div class="headrow">
-        <div class="title">Access</div>
-        <div class="prices">
-          <!-- Annualized monthly -->
-          <div>
-            <div class="price"><span class="amt">$16.99</span><span class="per">/mo</span></div>
-            <div class="note">12 months billed annually</div>
-          </div>
-          <!-- Billed monthly -->
-          <div>
-            <div class="price"><span class="amt">$19.99</span><span class="per">/mo</span></div>
-            <div class="note">billed monthly</div>
-          </div>
+      <div class="tiername">Access</div>
+
+      <div class="prices" aria-label="Access pricing">
+        <div>
+          <div class="price"><span class="amt">$16.99</span><span class="per">/mo</span></div>
+          <div class="note">12 months billed annually</div>
+        </div>
+        <div>
+          <div class="price"><span class="amt">$19.99</span><span class="per">/mo</span></div>
+          <div class="note">billed monthly</div>
         </div>
       </div>
 
@@ -128,18 +131,17 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 
     <!-- Pro -->
     <article class="card featured" role="listitem" aria-label="Pro plan">
+      <div class="tiername">Pro</div>
       <span class="badge">Popular</span>
-      <div class="headrow">
-        <div class="title">Pro</div>
-        <div class="prices">
-          <div>
-            <div class="price"><span class="amt">$29.99</span><span class="per">/mo</span></div>
-            <div class="note">12 months billed annually</div>
-          </div>
-          <div>
-            <div class="price"><span class="amt">$34.99</span><span class="per">/mo</span></div>
-            <div class="note">billed monthly</div>
-          </div>
+
+      <div class="prices" aria-label="Pro pricing">
+        <div>
+          <div class="price"><span class="amt">$29.99</span><span class="per">/mo</span></div>
+          <div class="note">12 months billed annually</div>
+        </div>
+        <div>
+          <div class="price"><span class="amt">$34.99</span><span class="per">/mo</span></div>
+          <div class="note">billed monthly</div>
         </div>
       </div>
 
@@ -163,17 +165,16 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 
     <!-- Master -->
     <article class="card" role="listitem" aria-label="Master plan">
-      <div class="headrow">
-        <div class="title">Master</div>
-        <div class="prices">
-          <div>
-            <div class="price"><span class="amt">$49.99</span><span class="per">/mo</span></div>
-            <div class="note">12 months billed annually</div>
-          </div>
-          <div>
-            <div class="price"><span class="amt">$59.99</span><span class="per">/mo</span></div>
-            <div class="note">billed monthly</div>
-          </div>
+      <div class="tiername">Master</div>
+
+      <div class="prices" aria-label="Master pricing">
+        <div>
+          <div class="price"><span class="amt">$49.99</span><span class="per">/mo</span></div>
+          <div class="note">12 months billed annually</div>
+        </div>
+        <div>
+          <div class="price"><span class="amt">$59.99</span><span class="per">/mo</span></div>
+          <div class="note">billed monthly</div>
         </div>
       </div>
 
