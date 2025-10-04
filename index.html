@@ -4,12 +4,6 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>TradeIQX Pricing</title>
-<style><!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>TradeIQX Pricing</title>
 <style>
 :root{
   --bg:#0d1b2a; --panel:#111a27; --text:#eef2f7; --muted:#98a2b3;
@@ -36,12 +30,6 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 .tiername{
   text-align:center; font-size:24px; font-weight:900; letter-spacing:.2px;
 }
-.badge{
-  display:inline-flex; align-items:center; gap:6px; background:rgba(14,165,233,.12);
-  color:#7dd3fc; border:1px solid var(--ring); padding:6px 10px; border-radius:999px;
-  font-size:12px; font-weight:800; letter-spacing:.3px; text-transform:uppercase;
-  margin:0 auto; /* center */
-}
 
 .prices{
   display:flex; justify-content:center; gap:28px; align-items:flex-end; flex-wrap:wrap; text-align:center;
@@ -59,6 +47,12 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 .features li{display:flex; align-items:flex-start; gap:10px; color:#d3d8df}
 .chk{width:18px; height:18px; border-radius:4px; display:inline-grid; place-items:center; background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.3); font-size:12px}
 
+/* unbulleted subline for "Includes all ... PLUS:" */
+.subline{
+  text-align:center; font-weight:800; color:#dbe2ea; padding:8px 10px; border:1px dashed #2a3a55;
+  border-radius:8px; background:rgba(14,165,233,.06);
+}
+
 .actions{display:grid; gap:10px; margin-top:auto}
 .btn{
   display:inline-grid; place-items:center; padding:12px 14px; border-radius:10px;
@@ -67,6 +61,13 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 .btn:hover{outline:2px solid var(--ring)}
 .btn.primary{background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#0b1220; border-color:transparent}
 .btn[disabled]{opacity:.55; cursor:not-allowed}
+
+.badge{
+  display:inline-flex; align-items:center; gap:6px; background:rgba(14,165,233,.12);
+  color:#7dd3fc; border:1px solid var(--ring); padding:6px 10px; border-radius:999px;
+  font-size:12px; font-weight:800; letter-spacing:.3px; text-transform:uppercase;
+  margin:0 auto;
+}
 
 .fine{color:#a3aab6; font-size:12px; margin-top:14px; text-align:center}
 </style>
@@ -129,7 +130,6 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
       </div>
 
       <div class="actions">
-        <!-- Yearly first & highlighted; Monthly second -->
         <a class="btn primary" href="https://buy.stripe.com/YOUR_ACCESS_YEARLY" target="_blank" rel="noopener">Subscribe Yearly</a>
         <a class="btn" href="https://buy.stripe.com/YOUR_ACCESS_MONTHLY" target="_blank" rel="noopener">Subscribe Monthly</a>
       </div>
@@ -154,9 +154,8 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
       <div class="divider"></div>
 
       <div class="features">
-        <div class="desc">Expanded asset coverage + dashboards—one-stop resource for intermediate traders seeking diversification.</div>
+        <div class="subline">Includes all Access features <strong>PLUS:</strong></div>
         <ul>
-          <li><span class="chk">✓</span> Includes all Access features PLUS:</li>
           <li><span class="chk">✓</span> Sector ETFs (XLK, XLE, XLF, XLV, XLY) + International ETFs (EFA, EEM, FXI)</li>
           <li><span class="chk">✓</span> Crypto signals (Bitcoin only)</li>
           <li><span class="chk">✓</span> Advanced weekly reports + Sector Heatmap Dashboard</li>
@@ -187,211 +186,11 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
       <div class="divider"></div>
 
       <div class="features">
-        <div class="desc">Pro-grade analytics, expanded Crypto signals, cross-asset global coverage that surpasses typical retail signal services for traders who are serious about maximizing market visibility.</div>
+        <div class="subline">Includes all Pro features <strong>PLUS:</strong></div>
         <ul>
-          <li><span class="chk">✓</span> Includes all Pro features PLUS:</li>
-          <li><span class="chk">✓</span> Major Commodities and Bonds ETFs(TLT, GLD, USO, SLV, HYG)
-	  <li><span class="chk">✓</span> Niche & Thematic ETFs (ARKK, LIT, SMH, UNG, EWZ)</li>
-          <li><span class="chk">✓</span> Crypto (BTC, ETH, +5 majors) signals</li>
-          <li><span class="chk">✓</span> Full Performance Suite (drawdowns, holding time, distribution analysis)</li>
-          <li><span class="chk">✓</span> AI-generated insights</li>
-        </ul>
-      </div>
-
-      <div class="actions">
-        <a class="btn primary" href="https://buy.stripe.com/YOUR_MASTER_YEARLY" target="_blank" rel="noopener">Subscribe Yearly</a>
-        <a class="btn" href="https://buy.stripe.com/YOUR_MASTER_MONTHLY" target="_blank" rel="noopener">Subscribe Monthly</a>
-      </div>
-    </article>
-
-  </div>
-
-  <p class="fine">Prices in USD. Cancel anytime.</p>
-</div>
-</body>
-</html>
-
-:root{
-  --bg:#0d1b2a; --panel:#111a27; --text:#eef2f7; --muted:#98a2b3;
-  --brand:#22c55e; --brand-2:#0ea5e9; --ring:rgba(14,165,233,.33);
-  --radius:16px; --gap:16px;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,Segoe UI,Roboto,Arial}
-a{color:inherit;text-decoration:none}
-
-.wrap{max-width:1100px;margin:0 auto;padding:40px 20px}
-h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px}
-
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
-@media (max-width:980px){.grid{grid-template-columns:1fr 1fr}}
-@media (max-width:640px){.grid{grid-template-columns:1fr}}
-
-.card{
-  background:var(--panel); border:1px solid #1f2937; border-radius:var(--radius);
-  padding:22px; display:flex; flex-direction:column; gap:14px;
-}
-.card.featured{border-color:var(--brand-2);box-shadow:0 0 0 3px rgba(14,165,233,.22)}
-
-.tiername{
-  text-align:center; font-size:24px; font-weight:900; letter-spacing:.2px;
-}
-.badge{
-  display:inline-flex; align-items:center; gap:6px; background:rgba(14,165,233,.12);
-  color:#7dd3fc; border:1px solid var(--ring); padding:6px 10px; border-radius:999px;
-  font-size:12px; font-weight:800; letter-spacing:.3px; text-transform:uppercase;
-  margin:0 auto; /* center */
-}
-
-.prices{
-  display:flex; justify-content:center; gap:28px; align-items:flex-end; flex-wrap:wrap; text-align:center;
-}
-.price{display:flex; align-items:flex-end; gap:6px; justify-content:center}
-.amt{font-size:28px; font-weight:900}
-.per{color:var(--muted); font-size:14px}
-.note{color:var(--muted); font-size:12px; margin-top:-2px}
-
-.divider{height:1px; background:#223047; margin:8px 0 2px}
-
-.features{display:grid; gap:8px}
-.features .desc{color:#c9cfd8; font-size:14px; text-align:center}
-.features ul{list-style:none; margin:0; padding:0; display:grid; gap:8px}
-.features li{display:flex; align-items:flex-start; gap:10px; color:#d3d8df}
-.chk{width:18px; height:18px; border-radius:4px; display:inline-grid; place-items:center; background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.3); font-size:12px}
-
-.actions{display:grid; gap:10px; margin-top:auto}
-.btn{
-  display:inline-grid; place-items:center; padding:12px 14px; border-radius:10px;
-  border:1px solid #223047; background:#0f172a; font-weight:800;
-}
-.btn:hover{outline:2px solid var(--ring)}
-.btn.primary{background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#0b1220; border-color:transparent}
-.btn[disabled]{opacity:.55; cursor:not-allowed}
-
-.fine{color:#a3aab6; font-size:12px; margin-top:14px; text-align:center}
-</style>
-</head>
-<body>
-<div class="wrap">
-  <h2>Choose your TradeIQX plan</h2>
-
-  <div class="grid" role="list">
-
-    <!-- Starter — Free -->
-    <article class="card" role="listitem" aria-label="Starter plan">
-      <div class="tiername">Starter — Free</div>
-
-      <div class="prices" aria-label="Starter pricing">
-        <div>
-          <div class="price"><span class="amt">$0</span><span class="per">/mo</span></div>
-          <div class="note">Ad-supported</div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="features">
-        <ul>
-          <li><span class="chk">✓</span> Ad-supported access</li>
-          <li><span class="chk">✓</span> 24-hour delay on FX &amp; Stock signals</li>
-        </ul>
-      </div>
-
-      <div class="actions">
-        <a class="btn" href="https://buy.stripe.com/YOUR_STARTER_CTA" target="_blank" rel="noopener">Get Started</a>
-      </div>
-    </article>
-
-    <!-- Access -->
-    <article class="card" role="listitem" aria-label="Access plan">
-      <div class="tiername">Access</div>
-
-      <div class="prices" aria-label="Access pricing">
-        <div>
-          <div class="price"><span class="amt">$16.99</span><span class="per">/mo</span></div>
-          <div class="note">12 months billed annually</div>
-        </div>
-        <div>
-          <div class="price"><span class="amt">$19.99</span><span class="per">/mo</span></div>
-          <div class="note">billed monthly</div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="features">
-        <div class="desc">Suitable for beginners. Adds transparency through weekly reports—rare among competitors.</div>
-        <ul>
-          <li><span class="chk">✓</span> No ads</li>
-          <li><span class="chk">✓</span> FX + U.S. Core Indices signals (SPY, QQQ, DIA, IWM)</li>
-          <li><span class="chk">✓</span> Weekly performance report &amp; Daily “Top 3 Signals” digest</li>
-        </ul>
-      </div>
-
-      <div class="actions">
-        <!-- Yearly first & highlighted; Monthly second -->
-        <a class="btn primary" href="https://buy.stripe.com/YOUR_ACCESS_YEARLY" target="_blank" rel="noopener">Subscribe Yearly</a>
-        <a class="btn" href="https://buy.stripe.com/YOUR_ACCESS_MONTHLY" target="_blank" rel="noopener">Subscribe Monthly</a>
-      </div>
-    </article>
-
-    <!-- Pro -->
-    <article class="card featured" role="listitem" aria-label="Pro plan">
-      <div class="tiername">Pro</div>
-      <span class="badge">Popular</span>
-
-      <div class="prices" aria-label="Pro pricing">
-        <div>
-          <div class="price"><span class="amt">$29.99</span><span class="per">/mo</span></div>
-          <div class="note">12 months billed annually</div>
-        </div>
-        <div>
-          <div class="price"><span class="amt">$34.99</span><span class="per">/mo</span></div>
-          <div class="note">billed monthly</div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="features">
-        <div class="desc">Expanded asset coverage + dashboards—one-stop resource for intermediate traders seeking diversification.</div>
-        <ul>
-          <li><span class="chk">✓</span> Includes all <strong>Access</strong> features</li>
-          <li><span class="chk">✓</span> Sector ETFs + International ETFs (EFA, EEM, FXI)</li>
-          <li><span class="chk">✓</span> Crypto signals (Bitcoin only)</li>
-          <li><span class="chk">✓</span> Advanced weekly reports + Sector Heatmap Dashboard</li>
-        </ul>
-      </div>
-
-      <div class="actions">
-        <a class="btn primary" href="https://buy.stripe.com/YOUR_PRO_YEARLY" target="_blank" rel="noopener">Subscribe Yearly</a>
-        <a class="btn" href="https://buy.stripe.com/YOUR_PRO_MONTHLY" target="_blank" rel="noopener">Subscribe Monthly</a>
-      </div>
-    </article>
-
-    <!-- Master -->
-    <article class="card" role="listitem" aria-label="Master plan">
-      <div class="tiername">Master</div>
-
-      <div class="prices" aria-label="Master pricing">
-        <div>
-          <div class="price"><span class="amt">$49.99</span><span class="per">/mo</span></div>
-          <div class="note">12 months billed annually</div>
-        </div>
-        <div>
-          <div class="price"><span class="amt">$59.99</span><span class="per">/mo</span></div>
-          <div class="note">billed monthly</div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="features">
-        <div class="desc">Pro-grade analytics, cross-asset global coverage, and expanded Crypto access.</div>
-        <ul>
-          <li><span class="chk">✓</span> Includes all <strong>Pro</strong> features</li>
-          <li><span class="chk">✓</span> Adds Commodities, Bonds, and Thematic ETFs</li>
-          <li><span class="chk">✓</span> Crypto Top 10 signals</li>
+          <li><span class="chk">✓</span> Commodities ETFs: GLD, SLV, USO, PDBC, GDMN</li>
+          <li><span class="chk">✓</span> Bond ETFs: BND, AGG, LQD, BNDX, VCIT, TLT, HYG, TIP, SHV</li>
+          <li><span class="chk">✓</span> Crypto signals: BTC, ETH + majors (BNB, SOL, XRP, ADA, LTC)</li>
           <li><span class="chk">✓</span> Full Performance Suite (drawdowns, holding time, distribution analysis)</li>
           <li><span class="chk">✓</span> AI-generated insights</li>
         </ul>
