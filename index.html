@@ -1,51 +1,60 @@
-<!-- TradeIQX Pricing Widget (drop-in) -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>TradeIQX Pricing</title>
 <style>
-/* ---- quick theme knobs ---- */
-.tiqx { --bg:#0d1b2a; --panel:#111a27; --text:#eef2f7; --muted:#98a2b3;
-        --brand:#22c55e; --brand-2:#0ea5e9; --accent:#f59e0b; --ok:#22c55e;
-        --ring:rgba(34,197,94,.3); --radius:16px; --gap:16px; font:16px/1.5 system-ui,Segoe UI,Roboto,Arial; color:var(--text); }
-.tiqx a { color:inherit; text-decoration:none; }
-.tiqx .wrap{ max-width:1100px; margin:0 auto; padding:40px 20px; }
-.tiqx .head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; gap:12px; flex-wrap:wrap; }
-.tiqx h2{ margin:0; font-size:28px; letter-spacing:.2px; }
-.tiqx .toggle{ display:flex; align-items:center; gap:10px; font-weight:600; }
-.tiqx .toggle small{ color:var(--muted); font-weight:500; }
-.tiqx .switch{ position:relative; width:56px; height:30px; border-radius:999px; background:#1f2937; cursor:pointer; }
-.tiqx .knob{position:absolute; top:3px; left:3px; width:24px; height:24px; border-radius:50%; background:#fff; transition:left .2s;}
-.tiqx.yearly .knob{ left:29px; }
-.tiqx .grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gap); }
-@media (max-width:980px){ .tiqx .grid{grid-template-columns:1fr 1fr} }
-@media (max-width:640px){ .tiqx .grid{grid-template-columns:1fr} }
+/* ---- TradeIQX Pricing Widget ---- */
+:root{
+  --bg:#0d1b2a; --panel:#111a27; --text:#eef2f7; --muted:#98a2b3;
+  --brand:#22c55e; --brand-2:#0ea5e9; --ring:rgba(14,165,233,.3);
+  --radius:16px; --gap:16px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,Segoe UI,Roboto,Arial}
+a{color:inherit;text-decoration:none}
 
-.tiqx .card{ background:var(--panel); border:1px solid #1f2937; border-radius:var(--radius); padding:22px; display:flex; flex-direction:column; gap:14px; }
-.tiqx .badge{ display:inline-flex; align-items:center; gap:6px; background:rgba(34,197,94,.12); color:#86efac; border:1px solid var(--ring); padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.3px; text-transform:uppercase; }
-.tiqx .title{ font-size:18px; font-weight:700; }
-.tiqx .sub{ color:var(--muted); font-size:14px; min-height:34px; }
-.tiqx .price{ display:flex; align-items:flex-end; gap:8px; }
-.tiqx .price .amt{ font-size:36px; font-weight:800; letter-spacing:.2px; }
-.tiqx .price .per{ color:var(--muted); font-size:14px; }
-.tiqx .price .yr, .tiqx:not(.yearly) .price .yr { display:none; }
-.tiqx.yearly .price .mo { display:none; }
-.tiqx.yearly .price .yr { display:inline-flex; }
+.tiqx .wrap{max-width:1100px;margin:0 auto;padding:40px 20px}
+.tiqx .head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.tiqx h2{margin:0;font-size:28px;letter-spacing:.2px}
+.tiqx .toggle{display:flex;align-items:center;gap:10px;font-weight:700}
+.tiqx .toggle small{color:var(--muted);font-weight:600}
+.tiqx .switch{position:relative;width:56px;height:30px;border-radius:999px;background:#1f2937;cursor:pointer;border:1px solid #223047}
+.tiqx .knob{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .2s}
+.tiqx.yearly .knob{left:29px}
 
-.tiqx ul{ list-style:none; padding:0; margin:0; display:grid; gap:8px; }
-.tiqx li{ display:flex; align-items:flex-start; gap:10px; color:#d3d8df; }
-.tiqx .chk{ width:18px; height:18px; border-radius:4px; display:inline-grid; place-items:center; background:rgba(34,197,94,.12); border:1px solid var(--ring); font-size:12px; }
-.tiqx .act{ margin-top:auto; display:grid; gap:10px; }
-.tiqx .btn{ display:inline-grid; place-items:center; padding:12px 14px; border-radius:10px; border:1px solid #223047; background:#0f172a; font-weight:700; }
-.tiqx .btn:hover{ outline:2px solid var(--ring); }
-.tiqx .btn.primary{ background:linear-gradient(180deg, var(--brand), var(--brand-2)); color:#0b1220; border-color:transparent; }
-.tiqx .btn[disabled]{ opacity:.5; cursor:not-allowed; }
-.tiqx .btn .small{ font-weight:600; font-size:12px; opacity:.8; }
+.tiqx .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
+@media (max-width:980px){.tiqx .grid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.tiqx .grid{grid-template-columns:1fr}}
 
-.tiqx .btn.mo, .tiqx .btn.yr { display:none; }
-.tiqx:not(.yearly) .btn.mo { display:inline-grid; }
-.tiqx.yearly .btn.yr { display:inline-grid; }
+.tiqx .card{background:var(--panel);border:1px solid #1f2937;border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:12px}
+.tiqx .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(14,165,233,.12);color:#7dd3fc;border:1px solid var(--ring);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.3px;text-transform:uppercase}
+.tiqx .title{font-size:18px;font-weight:800}
+.tiqx .sub{color:var(--muted);font-size:14px}
+.tiqx .price{display:flex;align-items:flex-end;gap:8px}
+.tiqx .amt{font-size:36px;font-weight:900;letter-spacing:.2px}
+.tiqx .per{color:var(--muted);font-size:14px}
+.tiqx .mo,.tiqx .yr{display:none}
+.tiqx:not(.yearly) .mo{display:inline-flex}
+.tiqx.yearly .yr{display:inline-flex}
 
-/* highlight "Pro" or "Master" */
-.tiqx .card.featured { border-color:var(--brand-2); box-shadow:0 0 0 3px rgba(14,165,233,.25); }
+.tiqx ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.tiqx li{display:flex;align-items:flex-start;gap:10px;color:#d3d8df}
+.tiqx .chk{width:18px;height:18px;border-radius:4px;display:inline-grid;place-items:center;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);font-size:12px}
+
+.tiqx .act{margin-top:auto;display:grid;gap:10px}
+.tiqx .btn{display:inline-grid;place-items:center;padding:12px 14px;border-radius:10px;border:1px solid #223047;background:#0f172a;font-weight:800}
+.tiqx .btn:hover{outline:2px solid rgba(34,197,94,.3)}
+.tiqx .btn.primary{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#0b1220;border-color:transparent}
+.tiqx .btn[disabled]{opacity:.5;cursor:not-allowed}
+.tiqx .btn .small{font-weight:700;font-size:12px;opacity:.85}
+
+.tiqx .card.featured{border-color:var(--brand-2);box-shadow:0 0 0 3px rgba(14,165,233,.22)}
+.tiqx .fine{color:#a3aab6;font-size:12px;margin-top:14px}
 </style>
-
+</head>
+<body>
 <div id="tiqx-pricing" class="tiqx">
   <div class="wrap">
     <div class="head">
@@ -53,90 +62,95 @@
       <div class="toggle" aria-label="Billing period toggle">
         <span>Monthly</span>
         <button id="billingSwitch" class="switch" type="button" aria-pressed="false" aria-label="Toggle yearly billing"><span class="knob"></span></button>
-        <span>Yearly <small>(save 2 months)</small></span>
+        <span>Yearly <small>(save with annual)</small></span>
       </div>
     </div>
 
     <div class="grid" role="list">
-      <!-- Starter -->
-      <article class="card" role="listitem">
-        <div class="title">Starter</div>
-        <div class="sub">For trying things out.</div>
+
+      <!-- Starter — Free -->
+      <article class="card" role="listitem" aria-label="Starter plan">
+        <div class="title">Starter – Free</div>
+        <div class="sub">Ad-supported access with delayed signals.</div>
         <div class="price">
-          <!-- TODO: replace the amounts -->
           <div class="amt mo">$0</div><div class="per mo">/mo</div>
           <div class="amt yr">$0</div><div class="per yr">/yr</div>
         </div>
         <ul>
-          <li><span class="chk">✓</span> Community signals (delayed)</li>
-          <li><span class="chk">✓</span> Asset board (limited)</li>
+          <li><span class="chk">✓</span> Ad-supported access</li>
+          <li><span class="chk">✓</span> 24-hour delay on FX &amp; Stock signals</li>
         </ul>
         <div class="act">
-          <!-- TODO: replace Stripe links -->
-          <a class="btn mo" href="#" target="_blank" rel="noopener">Subscribe</a>
-          <a class="btn yr" href="#" target="_blank" rel="noopener">Subscribe</a>
+          <a class="btn mo" href="#" target="_blank" rel="noopener">Get Started</a>
+          <a class="btn yr" href="#" target="_blank" rel="noopener">Get Started</a>
         </div>
       </article>
 
-      <!-- Access -->
-      <article class="card" role="listitem">
-        <div class="title">Access</div>
-        <div class="sub">Great for active followers.</div>
+      <!-- Access — $19.99 / $16.99/mo billed annually -->
+      <article class="card" role="listitem" aria-label="Access plan">
+        <div class="title">Access – $19.99/mo <span class="mo"></span><span class="yr"></span></div>
+        <div class="sub">Suitable for beginners. Adds transparency through weekly reports—rare among competitors.</div>
         <div class="price">
-          <div class="amt mo">$00</div><div class="per mo">/mo</div>
-          <div class="amt yr">$000</div><div class="per yr">/yr</div>
+          <div class="amt mo">$19.99</div><div class="per mo">/mo</div>
+          <div class="amt yr">$203.88</div><div class="per yr">/yr</div>
         </div>
         <ul>
-          <li><span class="chk">✓</span> Real-time FX & ETF (Pro delay)</li>
-          <li><span class="chk">✓</span> Weekly recap</li>
+          <li><span class="chk">✓</span> No ads</li>
+          <li><span class="chk">✓</span> FX + U.S. Core Indices signals (SPY, QQQ, DIA, IWM)</li>
+          <li><span class="chk">✓</span> Weekly performance report &amp; Daily “Top 3 Signals” digest</li>
         </ul>
         <div class="act">
-          <a class="btn mo" href="https://buy.stripe.com/YOUR_ACCESS_MONTHLY" target="_blank" rel="noopener">Subscribe</a>
-          <a class="btn yr" href="https://buy.stripe.com/YOUR_ACCESS_YEARLY" target="_blank" rel="noopener">Subscribe</a>
+          <a class="btn mo" href="https://buy.stripe.com/YOUR_ACCESS_MONTHLY" target="_blank" rel="noopener">Subscribe Monthly</a>
+          <a class="btn yr" href="https://buy.stripe.com/YOUR_ACCESS_YEARLY"  target="_blank" rel="noopener">Subscribe Yearly</a>
         </div>
       </article>
 
-      <!-- Pro -->
-      <article class="card featured" role="listitem">
+      <!-- Pro — $34.99 / $29.99/mo billed annually -->
+      <article class="card featured" role="listitem" aria-label="Pro plan">
         <span class="badge">Popular</span>
-        <div class="title">Pro</div>
-        <div class="sub">Real-time FX + ETFs, reports.</div>
+        <div class="title">Pro – $34.99/mo</div>
+        <div class="sub">Expanded asset coverage + dashboards—one-stop resource for intermediate traders seeking diversification.</div>
         <div class="price">
-          <div class="amt mo">$00</div><div class="per mo">/mo</div>
-          <div class="amt yr">$000</div><div class="per yr">/yr</div>
+          <div class="amt mo">$34.99</div><div class="per mo">/mo</div>
+          <div class="amt yr">$359.88</div><div class="per yr">/yr</div>
         </div>
         <ul>
-          <li><span class="chk">✓</span> Real-time signals (FX/ETF)</li>
-          <li><span class="chk">✓</span> Signal tiles + alerts</li>
-          <li><span class="chk">✓</span> Midweek + Saturday reports</li>
+          <li><span class="chk">✓</span> Includes all <strong>Access</strong> features</li>
+          <li><span class="chk">✓</span> Sector ETFs + International ETFs (EFA, EEM, FXI)</li>
+          <li><span class="chk">✓</span> Crypto signals (Bitcoin only)</li>
+          <li><span class="chk">✓</span> Advanced weekly reports + Sector Heatmap Dashboard</li>
         </ul>
         <div class="act">
-          <a class="btn primary mo" href="https://buy.stripe.com/YOUR_PRO_MONTHLY" target="_blank" rel="noopener">Subscribe</a>
-          <a class="btn primary yr" href="https://buy.stripe.com/YOUR_PRO_YEARLY" target="_blank" rel="noopener">Subscribe</a>
+          <a class="btn primary mo" href="https://buy.stripe.com/YOUR_PRO_MONTHLY" target="_blank" rel="noopener">Subscribe Monthly</a>
+          <a class="btn primary yr" href="https://buy.stripe.com/YOUR_PRO_YEARLY"  target="_blank" rel="noopener">Subscribe Yearly</a>
           <a class="btn" href="#features"><span class="small">See full feature list</span></a>
         </div>
       </article>
 
-      <!-- Master -->
-      <article class="card" role="listitem">
-        <div class="title">Master</div>
-        <div class="sub">All assets, fastest feeds.</div>
+      <!-- Master — $59.99 / $49.99/mo billed annually -->
+      <article class="card" role="listitem" aria-label="Master plan">
+        <div class="title">Master – $59.99/mo</div>
+        <div class="sub">Pro-grade analytics, cross-asset global coverage, and expanded Crypto access.</div>
         <div class="price">
-          <div class="amt mo">$00</div><div class="per mo">/mo</div>
-          <div class="amt yr">$000</div><div class="per yr">/yr</div>
+          <div class="amt mo">$59.99</div><div class="per mo">/mo</div>
+          <div class="amt yr">$599.88</div><div class="per yr">/yr</div>
         </div>
         <ul>
-          <li><span class="chk">✓</span> Real-time: all assets</li>
-          <li><span class="chk">✓</span> Priority support</li>
+          <li><span class="chk">✓</span> Includes all <strong>Pro</strong> features</li>
+          <li><span class="chk">✓</span> Adds Commodities, Bonds, and Thematic ETFs</li>
+          <li><span class="chk">✓</span> Crypto Top 10 signals</li>
+          <li><span class="chk">✓</span> Full Performance Suite (drawdowns, holding time, distribution analysis)</li>
+          <li><span class="chk">✓</span> AI-generated insights</li>
         </ul>
         <div class="act">
-          <a class="btn mo" href="https://buy.stripe.com/YOUR_MASTER_MONTHLY" target="_blank" rel="noopener">Subscribe</a>
-          <a class="btn yr" href="https://buy.stripe.com/YOUR_MASTER_YEARLY" target="_blank" rel="noopener">Subscribe</a>
-          <!-- Optional add-on: Automation (coming soon) -->
-          <button class="btn" disabled>Automation add-on +$10/mo or $120/yr (Coming soon)</button>
+          <a class="btn mo" href="https://buy.stripe.com/YOUR_MASTER_MONTHLY" target="_blank" rel="noopener">Subscribe Monthly</a>
+          <a class="btn yr" href="https://buy.stripe.com/YOUR_MASTER_YEARLY"  target="_blank" rel="noopener">Subscribe Yearly</a>
         </div>
       </article>
+
     </div>
+
+    <p class="fine">Prices in USD. Annual options show total billed yearly (e.g., $203.88 = $16.99/mo × 12). Cancel anytime.</p>
   </div>
 </div>
 
@@ -149,14 +163,8 @@
     btn.setAttribute('aria-pressed', yearly ? 'true' : 'false');
   }
   btn.addEventListener('click',()=> setMode(!root.classList.contains('yearly')));
-  // default: show monthly
-  setMode(false);
+  setMode(false); // default: show Monthly
 })();
 </script>
-
-<noscript>
-  <!-- Fallback if JS is blocked -->
-  <p style="padding:12px;background:#111;color:#eee;border-radius:8px">
-    Pricing table requires JavaScript. Please enable it to toggle Monthly/Yearly.
-  </p>
-</noscript>
+</body>
+</html>
