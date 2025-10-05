@@ -1,20 +1,20 @@
-import { VercelRequest, VercelResponse } from '@vercel/node'
 import Stripe from 'stripe'
 import { createClient } from '@supabase/supabase-js'
 
-export const config = { api: { bodyParser: false } }
-
-function readRawBody(req: VercelRequest): Promise<Buffer> {
+// Helper to read the raw body for Stripe signature verification
+function readRawBody(req: any): Promise<Buffer> {
   return new Promise((resolve, reject) => {
     const chunks: Uint8Array[] = []
-    req.on('data', (chunk) => chunks.push(chunk))
+    req.on('data', (chunk: Uint8Array) => chunks.push(chunk))
     req.on('end', () => resolve(Buffer.concat(chunks)))
     req.on('error', reject)
   })
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') return res.status(405).json({ ok: false, error: 'Method not allowed' })
+export default async function handler(req: any, res: any) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ ok: false, error: 'Method not allowed' })
+  }
 
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, { apiVersion: '2024-06-20' })
@@ -31,18 +31,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (event.type === 'checkout.session.completed') {
       const session = event.data.object as Stripe.Checkout.Session
+
+      // Best-effort: get email
       const email =
-        (session.customer_details && session.customer_details.email) ||
+        session.customer_details?.email ||
         (session.customer_email as string) ||
         ''
 
-      // Prefer price metadata.tier, fallback to session metadata.tier if you set it there
+      // Try to discover tier from line_items.price.metadata.tier.
+      // Stripe does NOT include line_items by default in webhooks: fetch full session with expand.
       let tier = ''
-      if ((session as any)?.line_items?.data?.length) {
-        tier = (session as any).line_items.data[0]?.price?.metadata?.tier || ''
-      }
-      if (!tier && session.metadata) {
-        tier = (session.metadata as any).tier || ''
+      try {
+        const full = await stripe.checkout.sessions.retrieve(session.id, { expand: ['line_items.data.price'] })
+        const item = full?.line_items?.data?.[0]
+        tier = item?.price?.metadata?.tier || (full.metadata as any)?.tier || ''
+      } catch {
+        // fallback to session metadata if present
+        tier = ((session.metadata as any)?.tier || '') as string
       }
 
       if (email && tier) {
@@ -50,6 +55,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           process.env.SUPABASE_URL as string,
           process.env.SUPABASE_SERVICE_ROLE_KEY as string
         )
+
+        // Update existing profile by email (no-op if the user hasn't signed up yet)
         await supabase.from('profiles').update({ tier }).eq('email', email)
       }
     }
