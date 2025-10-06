@@ -1,8 +1,3 @@
-export default async function handler(req: any, res: any) {
-  console.log('stripe-signature header present:', !!req.headers['stripe-signature'])
-  console.log('content-type:', req.headers['content-type'])
-  // ...rest of code...
-}
 import Stripe from 'stripe'
 import { createClient } from '@supabase/supabase-js'
 
