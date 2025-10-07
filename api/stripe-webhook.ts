@@ -12,6 +12,13 @@ function readRawBody(req: any): Promise<Buffer> {
 }
 
 export default async function handler(req: any, res: any) {
+  // DEBUG: show that we see the header & which secret is loaded
+  const sigHeader = req.headers['stripe-signature'] as string | undefined
+  const whsec = (process.env.STRIPE_WEBHOOK_SECRET || '')
+  console.log('stripe-signature header present:', Boolean(sigHeader))
+  console.log('whsec length:', whsec.length, 'prefix:', whsec.slice(0,6), 'suffix:', whsec.slice(-6))
+  console.log('content-type:', req.headers['content-type'])
+
   if (req.method !== 'POST') {
     return res.status(405).json({ ok: false, error: 'Method not allowed' })
   }
