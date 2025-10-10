@@ -4,14 +4,38 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>TradeIQX Pricing</title>
+
+<!-- Brand font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<meta name="theme-color" content="#0D1B2A" />
+<meta name="description" content="Choose a TradeIQX plan: Starter, Access, Pro, Master." />
+
 <style>
 :root{
-  --bg:#0d1b2a; --panel:#111a27; --text:#eef2f7; --muted:#98a2b3;
-  --brand:#22c55e; --brand-2:#0ea5e9; --ring:rgba(14,165,233,.33);
-  --radius:16px; --gap:16px;
+  /* Brand palette (your picks) */
+  --bg:#0d1b2a;         /* page background */
+  --panel:#111a27;      /* card/panel background */
+  --text:#eef2f7;       /* primary text */
+  --muted:#98a2b3;      /* muted text */
+
+  --brand:#009688;      /* modern teal (primary accent) */
+  --brand-2:#673AB7;    /* soft purple (secondary accent for gradient) */
+  --ring:rgba(0,150,136,.33);
+
+  --radius:16px;
+  --gap:16px;
 }
+
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,Segoe UI,Roboto,Arial}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font:16px/1.5 "Manrope", system-ui, Segoe UI, Roboto, Arial, sans-serif;
+}
 a{color:inherit;text-decoration:none}
 
 .wrap{max-width:1100px;margin:0 auto;padding:40px 20px}
@@ -22,10 +46,16 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 @media (max-width:640px){.grid{grid-template-columns:1fr}}
 
 .card{
-  background:var(--panel); border:1px solid #1f2937; border-radius:var(--radius);
-  padding:22px; display:flex; flex-direction:column; gap:14px;
+  background:var(--panel);
+  border:1px solid #1f2937;
+  border-radius:var(--radius);
+  padding:22px;
+  display:flex; flex-direction:column; gap:14px;
 }
-.card.featured{border-color:var(--brand-2);box-shadow:0 0 0 3px rgba(14,165,233,.22)}
+.card.featured{
+  border-color:var(--brand-2);
+  box-shadow:0 0 0 3px rgba(103,58,183,.22);
+}
 
 .tiername{ text-align:center; font-size:24px; font-weight:900; letter-spacing:.2px; }
 
@@ -34,7 +64,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 }
 .price{display:flex; align-items:flex-end; gap:6px; justify-content:center}
 .price-block .amt{font-size:28px; font-weight:900}
-.price-block.monthly .amt{font-weight:400;} /* monthly (billed monthly) NOT bold */
+.price-block.monthly .amt{font-weight:400;} /* monthly NOT bold */
 .per{color:var(--muted); font-size:14px}
 .note{color:var(--muted); font-size:12px; margin-top:-2px}
 
@@ -44,7 +74,10 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 .features .desc{color:#c9cfd8; font-size:14px; text-align:center}
 .features ul{list-style:none; margin:0; padding:0; display:grid; gap:8px}
 .features li{display:flex; align-items:flex-start; gap:10px; color:#d3d8df}
-.chk{width:18px; height:18px; border-radius:4px; display:inline-grid; place-items:center; background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.3); font-size:12px}
+.chk{
+  width:18px; height:18px; border-radius:4px; display:inline-grid; place-items:center;
+  background:rgba(0,150,136,.12); border:1px solid rgba(0,150,136,.35); font-size:12px;
+}
 
 .actions{display:grid; gap:10px; margin-top:auto}
 
@@ -52,10 +85,12 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 .btn{
   display:inline-grid; place-items:center; padding:12px 14px; border-radius:10px;
   background:#0f172a; border:1px solid #223047; font-weight:800;
+  transition:filter .15s ease, transform .05s ease;
 }
-.btn:hover{outline:2px solid var(--ring)}
+.btn:hover{outline:2px solid var(--ring); filter:brightness(1.05)}
+.btn:active{transform:translateY(1px)}
 
-/* Yearly: same bg as monthly, thin gradient BORDER (no fill) */
+/* Primary button uses brand gradient border */
 .btn.primary{
   border:1px solid transparent;
   background:
@@ -63,11 +98,12 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
     linear-gradient(180deg,var(--brand),var(--brand-2)) border-box;
   color:var(--text);
 }
+
 .btn[disabled]{opacity:.55; cursor:not-allowed}
 
 .badge{
-  display:inline-flex; align-items:center; gap:6px; background:rgba(14,165,233,.12);
-  color:#7dd3fc; border:1px solid var(--ring); padding:6px 10px; border-radius:999px;
+  display:inline-flex; align-items:center; gap:6px; background:rgba(103,58,183,.12);
+  color:#b39ddb; border:1px solid rgba(103,58,183,.33); padding:6px 10px; border-radius:999px;
   font-size:12px; font-weight:800; letter-spacing:.3px; text-transform:uppercase;
   margin:0 auto;
 }
@@ -81,7 +117,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 
   <div class="grid" role="list">
 
-    <!-- Starter -->
+    <!-- Starter (free) -->
     <article class="card" role="listitem" aria-label="Starter plan">
       <div class="tiername">Starter</div>
 
@@ -104,7 +140,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
       </div>
 
       <div class="actions">
-        <!-- Update this if you prefer a Squarespace form page -->
+        <!-- Free → send user to your portal signup; break out of Squarespace iframe -->
         <a class="btn" href="https://app.tradeiqx.com/signup?plan=starter" target="_top" rel="noopener">Get Started</a>
       </div>
     </article>
@@ -138,8 +174,8 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
       </div>
 
       <div class="actions">
-        <a class="btn primary" href="https://buy.stripe.com/14A28tghceuDeE6cjY7ok01" target="_blank" rel="noopener">Subscribe Yearly</a>
-        <a class="btn" href="https://buy.stripe.com/4gMaEZ9SObir7bEabQ7ok00" target="_blank" rel="noopener">Subscribe Monthly</a>
+        <a class="btn primary" href="https://buy.stripe.com/14A28tghceuDeE6cjY7ok01" target="_blank" rel="noopener noreferrer">Subscribe Yearly</a>
+        <a class="btn" href="https://buy.stripe.com/4gMaEZ9SObir7bEabQ7ok00" target="_blank" rel="noopener noreferrer">Subscribe Monthly</a>
       </div>
     </article>
 
@@ -175,8 +211,8 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
       </div>
 
       <div class="actions">
-        <a class="btn primary" href="https://buy.stripe.com/8x2cN75Cy3PZ2VoabQ7ok03" target="_blank" rel="noopener">Subscribe Yearly</a>
-        <a class="btn" href="https://buy.stripe.com/dRmaEZ2qm4U3gMecjY7ok02" target="_blank" rel="noopener">Subscribe Monthly</a>
+        <a class="btn primary" href="https://buy.stripe.com/8x2cN75Cy3PZ2VoabQ7ok03" target="_blank" rel="noopener noreferrer">Subscribe Yearly</a>
+        <a class="btn" href="https://buy.stripe.com/dRmaEZ2qm4U3gMecjY7ok02" target="_blank" rel="noopener noreferrer">Subscribe Monthly</a>
       </div>
     </article>
 
@@ -211,8 +247,8 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
       </div>
 
       <div class="actions">
-        <a class="btn primary" href="https://buy.stripe.com/3cI3cx4yu3PZ2VogAe7ok05" target="_blank" rel="noopener">Subscribe Yearly</a>
-        <a class="btn" href="https://buy.stripe.com/bJe5kFe94aen3ZsgAe7ok04" target="_blank" rel="noopener">Subscribe Monthly</a>
+        <a class="btn primary" href="https://buy.stripe.com/3cI3cx4yu3PZ2VogAe7ok05" target="_blank" rel="noopener noreferrer">Subscribe Yearly</a>
+        <a class="btn" href="https://buy.stripe.com/bJe5kFe94aen3ZsgAe7ok04" target="_blank" rel="noopener noreferrer">Subscribe Monthly</a>
       </div>
     </article>
 
