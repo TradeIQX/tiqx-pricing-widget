@@ -56,8 +56,22 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 }
 .tiername{text-align:center;font-size:24px;font-weight:900;letter-spacing:.2px;}
 
-/* Prices */
-.prices{display:flex;justify-content:center;gap:28px;align-items:flex-end;flex-wrap:wrap;text-align:center;}
+/* Prices — FORCE VERTICAL STACK ALWAYS */
+.prices{
+  display:flex;
+  flex-direction:column !important; /* key: stack annual over monthly at any width */
+  justify-content:flex-start;
+  align-items:center;
+  gap:10px;                 /* space between annual and monthly blocks */
+  text-align:center;
+}
+.price-block{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  min-width:0;
+}
 .price{display:flex;align-items:flex-end;gap:6px;justify-content:center}
 .price-block .amt{font-size:28px;font-weight:900}
 .price-block.monthly .amt{font-weight:400}
@@ -263,4 +277,3 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 </div>
 </body>
 </html>
-
