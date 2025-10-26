@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>TradeIQX Pricing</title>
 
-<!-- Brand font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -35,8 +34,21 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 @media (min-width:900px) and (max-width:1199px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
 @media (min-width:600px) and (max-width:899px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media (max-width:599px){.grid{grid-template-columns:1fr;}}
-.card{background:var(--panel);border:1px solid #1f2937;border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0;}
-.card.featured{border-color:var(--brand-2);box-shadow:0 0 0 3px rgba(103,58,183,.22);}
+.card{
+  background:var(--panel);
+  border:1px solid #1f2937;
+  border-radius:var(--radius);
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  min-width:0;
+  position:relative;
+}
+.card.featured{
+  border-color:var(--brand-2);
+  box-shadow:0 0 0 3px rgba(103,58,183,.22);
+}
 .tiername{text-align:center;font-size:24px;font-weight:900;letter-spacing:.2px;}
 .prices{display:flex;justify-content:center;gap:28px;align-items:flex-end;flex-wrap:wrap;text-align:center;}
 .price{display:flex;align-items:flex-end;gap:6px;justify-content:center}
@@ -62,11 +74,18 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 .btn.secondary{font-size:13px;}
 .btn[disabled]{opacity:.55;cursor:not-allowed}
 .badge{
-  display:inline-flex;align-items:center;gap:4px;
-  background:rgba(103,58,183,.12);color:#b39ddb;
-  border:1px solid rgba(103,58,183,.33);
-  padding:4px 8px;border-radius:999px;
-  font-size:11px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;
+  position:absolute;
+  top:-10px;
+  right:14px;
+  background:linear-gradient(180deg,var(--brand-2),#8b5cf6);
+  color:#fff;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.3px;
+  text-transform:uppercase;
+  box-shadow:0 2px 6px rgba(0,0,0,0.3);
 }
 .fine{color:#a3aab6;font-size:12px;margin-top:14px;text-align:center}
 </style>
@@ -136,10 +155,8 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 
 <!-- PRO -->
 <article class="card featured" role="listitem">
-  <div style="display:flex;justify-content:space-between;align-items:center;">
-    <div class="tiername" style="margin:0;">Pro</div>
-    <span class="badge">Popular</span>
-  </div>
+  <span class="badge">Popular</span>
+  <div class="tiername">Pro</div>
   <div class="prices">
     <div class="price-block annual">
       <div class="price"><span class="amt">$20</span><span class="per">/mo</span></div>
