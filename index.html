@@ -11,11 +11,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <meta name="theme-color" content="#0D1B2A" />
-<meta name="description" content="Choose a TradeIQX plan: Starter, Access, Pro, Master." />
+<meta name="description" content="Choose a TradeIQX plan: Starter, Access, Pro, Elite, Master." />
 
 <style>
 :root{
-  /* Brand palette (your picks) */
+  /* Brand palette */
   --bg:#0d1b2a;         /* page background */
   --panel:#111a27;      /* card/panel background */
   --text:#eef2f7;       /* primary text */
@@ -38,12 +38,15 @@ body{
 }
 a{color:inherit;text-decoration:none}
 
-.wrap{max-width:1100px;margin:0 auto;padding:40px 20px}
+.wrap{max-width:1200px;margin:0 auto;padding:40px 20px}
 h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
-@media (max-width:980px){.grid{grid-template-columns:1fr 1fr}}
-@media (max-width:640px){.grid{grid-template-columns:1fr}}
+/* Flexible grid for 5 tiers */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:var(--gap);
+}
 
 .card{
   background:var(--panel);
@@ -117,33 +120,42 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 
   <div class="grid" role="list">
 
-    <!-- Starter (free) -->
+    <!-- Starter -->
     <article class="card" role="listitem" aria-label="Starter plan">
       <div class="tiername">Starter</div>
 
       <div class="prices" aria-label="Starter pricing">
         <div class="price-block annual">
-          <div class="price"><span class="amt">$0</span><span class="per">/mo</span></div>
-          <div class="note">Ad-supported</div>
+          <div class="price"><span class="amt">$3.75</span><span class="per">/mo</span></div>
+          <div class="note">($45 billed annually)</div>
+        </div>
+        <div class="price-block monthly">
+          <div class="price"><span class="amt">$5</span><span class="per">/mo</span></div>
+          <div class="note">billed monthly</div>
         </div>
       </div>
 
       <div class="divider"></div>
 
       <div class="features">
-        <div class="desc">Ideal for exploring. Experience TradeIQX with delayed data—risk-free and ad-supported.</div>
+        <div class="desc">
+          Get started with <strong>one non-crypto ticker</strong> and learn the rhythm of the market.
+          Signals arrive <strong>twice daily</strong> (pre-market and end-of-day) via scheduled notifications.
+          Includes a <strong>5-day trial</strong> and is ad-supported.
+        </div>
         <div class="divider"></div>
         <ul>
-          <li><span class="chk">✓</span> Ad-supported access</li>
-          <li><span class="chk">✓</span> 24-hour delay on FX &amp; Stock signals</li>
+          <li><span class="chk">✓</span> 1 selected non-crypto ticker</li>
+          <li><span class="chk">✓</span> Pre-market & End-of-day cadence (2×/day)</li>
+          <li><span class="chk">✓</span> Scheduled notifications</li>
+          <li><span class="chk">✓</span> 5-day trial • Ad-supported</li>
         </ul>
       </div>
 
       <div class="actions">
-        <!-- Free → send user to your portal signup; break out of Squarespace iframe -->
-        <a class="btn" href="https://buy.stripe.com/4gM00l2qmbir2Vo4Rw7ok08" target="_blank" rel="noopener">
-  Get Started Free
-        </a>
+        <!-- TODO: replace with Starter Stripe links -->
+        <a class="btn primary" href="#" target="_blank" rel="noopener">Subscribe Yearly</a>
+        <a class="btn" href="#" target="_blank" rel="noopener">Subscribe Monthly</a>
       </div>
     </article>
 
@@ -153,11 +165,11 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 
       <div class="prices" aria-label="Access pricing">
         <div class="price-block annual">
-          <div class="price"><span class="amt">$16.99</span><span class="per">/mo</span></div>
-          <div class="note">12 months billed annually</div>
+          <div class="price"><span class="amt">$8</span><span class="per">/mo</span></div>
+          <div class="note">($96 billed annually)</div>
         </div>
         <div class="price-block monthly">
-          <div class="price"><span class="amt">$19.99</span><span class="per">/mo</span></div>
+          <div class="price"><span class="amt">$10</span><span class="per">/mo</span></div>
           <div class="note">billed monthly</div>
         </div>
       </div>
@@ -165,19 +177,24 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
       <div class="divider"></div>
 
       <div class="features">
-        <div class="desc">Suitable for beginners. Adds transparency through weekly reports—rare among competitors.</div>
+        <div class="desc">
+          Track up to <strong>7 non-crypto tickers</strong> with a simple, reliable routine.
+          Signals delivered <strong>twice daily</strong> (pre-market and end-of-day) via scheduled notifications,
+          plus <strong>basic reports</strong> to keep you on track.
+        </div>
         <div class="divider"></div>
         <ul>
-          <li><span class="chk">✓</span> No ads</li>
-          <li><span class="chk">✓</span> Major FX Pairings</li>
-          <li><span class="chk">✓</span> Major U.S. Core Indices signals</li>
-          <li><span class="chk">✓</span> Weekly performance report &amp; Daily “Top 3 Signals” digest</li>
+          <li><span class="chk">✓</span> Up to 7 non-crypto tickers</li>
+          <li><span class="chk">✓</span> Pre-market & End-of-day cadence (2×/day)</li>
+          <li><span class="chk">✓</span> Scheduled notifications</li>
+          <li><span class="chk">✓</span> Basic reports</li>
         </ul>
       </div>
 
       <div class="actions">
-        <a class="btn primary" href="https://buy.stripe.com/14A28tghceuDeE6cjY7ok01" target="_blank" rel="noopener noreferrer">Subscribe Yearly</a>
-        <a class="btn" href="https://buy.stripe.com/4gMaEZ9SObir7bEabQ7ok00" target="_blank" rel="noopener noreferrer">Subscribe Monthly</a>
+        <!-- TODO: replace with Access Stripe links -->
+        <a class="btn primary" href="#" target="_blank" rel="noopener">Subscribe Yearly</a>
+        <a class="btn" href="#" target="_blank" rel="noopener">Subscribe Monthly</a>
       </div>
     </article>
 
@@ -188,11 +205,11 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 
       <div class="prices" aria-label="Pro pricing">
         <div class="price-block annual">
-          <div class="price"><span class="amt">$29.99</span><span class="per">/mo</span></div>
-          <div class="note">12 months billed annually</div>
+          <div class="price"><span class="amt">$17</span><span class="per">/mo</span></div>
+          <div class="note">($204 billed annually)</div>
         </div>
         <div class="price-block monthly">
-          <div class="price"><span class="amt">$34.99</span><span class="per">/mo</span></div>
+          <div class="price"><span class="amt">$20</span><span class="per">/mo</span></div>
           <div class="note">billed monthly</div>
         </div>
       </div>
@@ -200,21 +217,61 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
       <div class="divider"></div>
 
       <div class="features">
-        <div class="desc">Built for active traders. Expands market coverage and insight depth with sector, international, and Bitcoin signals.</div>
+        <div class="desc">
+          Follow up to <strong>15 tickers</strong> (including <strong>up to 3 crypto</strong>) with more frequent updates.
+          Signals are scheduled <strong>3× daily</strong>—pre-market, midday, and end-of-day—plus a <strong>weekly digest</strong>.
+        </div>
         <div class="divider"></div>
         <ul>
-          <li><span class="chk">✓</span><strong> Includes all Access features PLUS:</strong></li>
-          <li><span class="chk">✓</span> Major Sector ETFs</li>
-          <li><span class="chk">✓</span> Major International ETFs</li>
-          <li><span class="chk">✓</span> Crypto signals (Bitcoin only)</li>
-          <li><span class="chk">✓</span> Advanced weekly reports</li>
-          <li><span class="chk">✓</span> Sector Heatmap Dashboard</li>
+          <li><span class="chk">✓</span> Up to 15 tickers (incl. up to 3 crypto)</li>
+          <li><span class="chk">✓</span> Pre-market, Midday & End-of-day (3×/day)</li>
+          <li><span class="chk">✓</span> Scheduled notifications</li>
+          <li><span class="chk">✓</span> Weekly digest across crypto & indices</li>
         </ul>
       </div>
 
       <div class="actions">
-        <a class="btn primary" href="https://buy.stripe.com/8x2cN75Cy3PZ2VoabQ7ok03" target="_blank" rel="noopener noreferrer">Subscribe Yearly</a>
-        <a class="btn" href="https://buy.stripe.com/dRmaEZ2qm4U3gMecjY7ok02" target="_blank" rel="noopener noreferrer">Subscribe Monthly</a>
+        <!-- TODO: replace with Pro Stripe links -->
+        <a class="btn primary" href="#" target="_blank" rel="noopener">Subscribe Yearly</a>
+        <a class="btn" href="#" target="_blank" rel="noopener">Subscribe Monthly</a>
+      </div>
+    </article>
+
+    <!-- Elite -->
+    <article class="card" role="listitem" aria-label="Elite plan">
+      <div class="tiername">Elite</div>
+
+      <div class="prices" aria-label="Elite pricing">
+        <div class="price-block annual">
+          <div class="price"><span class="amt">$30</span><span class="per">/mo</span></div>
+          <div class="note">($360 billed annually)</div>
+        </div>
+        <div class="price-block monthly">
+          <div class="price"><span class="amt">$35</span><span class="per">/mo</span></div>
+          <div class="note">billed monthly</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="features">
+        <div class="desc">
+          Scale to <strong>40 tickers</strong> (including crypto) with <strong>live, instant</strong> intelligence.
+          Receive <strong>real-time push</strong> alerts as markets move, plus <strong>heatmaps</strong> and a <strong>performance suite</strong> for deep insight.
+        </div>
+        <div class="divider"></div>
+        <ul>
+          <li><span class="chk">✓</span> Up to 40 tickers (incl. crypto)</li>
+          <li><span class="chk">✓</span> Live & instant signal delivery</li>
+          <li><span class="chk">✓</span> Real-time push notifications</li>
+          <li><span class="chk">✓</span> Heatmaps & performance suite</li>
+        </ul>
+      </div>
+
+      <div class="actions">
+        <!-- TODO: replace with Elite Stripe links -->
+        <a class="btn primary" href="#" target="_blank" rel="noopener">Subscribe Yearly</a>
+        <a class="btn" href="#" target="_blank" rel="noopener">Subscribe Monthly</a>
       </div>
     </article>
 
@@ -224,33 +281,33 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 
       <div class="prices" aria-label="Master pricing">
         <div class="price-block annual">
-          <div class="price"><span class="amt">$49.99</span><span class="per">/mo</span></div>
-          <div class="note">12 months billed annually</div>
+          <div class="price"><span class="amt">Custom</span></div>
+          <div class="note">Contact for pricing</div>
         </div>
         <div class="price-block monthly">
-          <div class="price"><span class="amt">$59.99</span><span class="per">/mo</span></div>
-          <div class="note">billed monthly</div>
+          <div class="price"><span class="amt">Custom</span></div>
+          <div class="note">Contact for pricing</div>
         </div>
       </div>
 
       <div class="divider"></div>
 
       <div class="features">
-        <div class="desc">Built for committed traders. Expands analytics and maximizes cross-asset coverage for sharper, more confident decision making.</div>
+        <div class="desc">
+          A bespoke plan with <strong>unlimited tickers</strong> and <strong>live, instant</strong> coverage.
+          Get <strong>priority real-time</strong> alerts, <strong>AI-driven insights</strong>, and <strong>API access</strong> for custom integration.
+        </div>
         <div class="divider"></div>
         <ul>
-          <li><span class="chk">✓</span><strong> Includes all Pro features PLUS:</strong></li>
-          <li><span class="chk">✓</span> Major Commodities ETFs</li>
-          <li><span class="chk">✓</span> Major Bond ETFs</li>
-          <li><span class="chk">✓</span> Crypto signals: BTC, ETH + major coins</li>
-          <li><span class="chk">✓</span> Full Performance Suite (drawdowns, holding time, distribution analysis)</li>
-          <li><span class="chk">✓</span> AI-generated insights</li>
+          <li><span class="chk">✓</span> Unlimited tickers</li>
+          <li><span class="chk">✓</span> Priority real-time alerts</li>
+          <li><span class="chk">✓</span> AI-driven insights & API access</li>
         </ul>
       </div>
 
       <div class="actions">
-        <a class="btn primary" href="https://buy.stripe.com/3cI3cx4yu3PZ2VogAe7ok05" target="_blank" rel="noopener noreferrer">Subscribe Yearly</a>
-        <a class="btn" href="https://buy.stripe.com/bJe5kFe94aen3ZsgAe7ok04" target="_blank" rel="noopener noreferrer">Subscribe Monthly</a>
+        <!-- Replace with contact form or Calendly -->
+        <a class="btn primary" href="mailto:hello@tradeiqx.com?subject=Master%20Plan%20Inquiry" target="_blank" rel="noopener">Contact Sales</a>
       </div>
     </article>
 
