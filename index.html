@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>TradeIQX Pricing</title>
 
-<!-- Brand font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -54,12 +53,12 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 .btn{
   display:inline-grid;place-items:center;padding:12px 14px;border-radius:10px;
   background:#0f172a;border:1px solid #223047;font-weight:700;text-align:center;
-  font-size:13px;white-space:nowrap;
-  transition:filter .15s ease,transform .05s ease;
+  white-space:nowrap;transition:filter .15s ease,transform .05s ease;
 }
 .btn:hover{outline:2px solid var(--ring);filter:brightness(1.05)}
 .btn:active{transform:translateY(1px)}
-.btn.primary{border:1px solid transparent;background:linear-gradient(#0f172a,#0f172a) padding-box,linear-gradient(180deg,var(--brand),var(--brand-2)) border-box;color:var(--text)}
+.btn.primary{border:1px solid transparent;background:linear-gradient(#0f172a,#0f172a) padding-box,linear-gradient(180deg,var(--brand),var(--brand-2)) border-box;color:var(--text);font-size:15px;}
+.btn.secondary{font-size:13px;}
 .btn[disabled]{opacity:.55;cursor:not-allowed}
 .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(103,58,183,.12);color:#b39ddb;border:1px solid rgba(103,58,183,.33);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;margin:0 auto;}
 .fine{color:#a3aab6;font-size:12px;margin-top:14px;text-align:center}
@@ -70,7 +69,7 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 <h2>Know Before You Trade: Choose your plan</h2>
 <div class="grid" role="list">
 
-<!-- Starter -->
+<!-- STARTER -->
 <article class="card" role="listitem">
   <div class="tiername">Starter</div>
   <div class="prices">
@@ -95,11 +94,11 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
   </div>
   <div class="actions">
     <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
-    <a class="btn" href="#" target="_blank">Subscribe Monthly</a>
+    <a class="btn secondary" href="#" target="_blank">Subscribe Monthly</a>
   </div>
 </article>
 
-<!-- Access -->
+<!-- ACCESS -->
 <article class="card" role="listitem">
   <div class="tiername">Access</div>
   <div class="prices">
@@ -124,11 +123,11 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
   </div>
   <div class="actions">
     <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
-    <a class="btn" href="#" target="_blank">Subscribe Monthly</a>
+    <a class="btn secondary" href="#" target="_blank">Subscribe Monthly</a>
   </div>
 </article>
 
-<!-- Pro -->
+<!-- PRO -->
 <article class="card featured" role="listitem">
   <div class="tiername">Pro</div>
   <span class="badge">Popular</span>
@@ -154,11 +153,11 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
   </div>
   <div class="actions">
     <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
-    <a class="btn" href="#" target="_blank">Subscribe Monthly</a>
+    <a class="btn secondary" href="#" target="_blank">Subscribe Monthly</a>
   </div>
 </article>
 
-<!-- Elite -->
+<!-- ELITE -->
 <article class="card" role="listitem">
   <div class="tiername">Elite</div>
   <div class="prices">
@@ -183,11 +182,11 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
   </div>
   <div class="actions">
     <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
-    <a class="btn" href="#" target="_blank">Subscribe Monthly</a>
+    <a class="btn secondary" href="#" target="_blank">Subscribe Monthly</a>
   </div>
 </article>
 
-<!-- Master -->
+<!-- MASTER -->
 <article class="card" role="listitem">
   <div class="tiername">Master</div>
   <div class="prices">
@@ -212,7 +211,7 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
   </div>
   <div class="actions">
     <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
-    <a class="btn" href="#" target="_blank">Subscribe Monthly</a>
+    <a class="btn secondary" href="#" target="_blank">Subscribe Monthly</a>
   </div>
 </article>
 
