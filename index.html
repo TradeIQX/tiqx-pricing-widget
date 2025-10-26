@@ -41,12 +41,12 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:40px 20px}
 h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 
-/* Flexible grid for 5 tiers */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
-  gap:var(--gap);
-}
+/* Responsive grid that always fits the widget width */
+.grid{display:grid; gap:var(--gap)}
+@media (min-width:1200px){ .grid{grid-template-columns:repeat(5, minmax(0,1fr));} }
+@media (min-width:900px) and (max-width:1199px){ .grid{grid-template-columns:repeat(3, minmax(0,1fr));} }
+@media (min-width:600px) and (max-width:899px){ .grid{grid-template-columns:repeat(2, minmax(0,1fr));} }
+@media (max-width:599px){ .grid{grid-template-columns:1fr;} }
 
 .card{
   background:var(--panel);
@@ -54,6 +54,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
   border-radius:var(--radius);
   padding:22px;
   display:flex; flex-direction:column; gap:14px;
+  min-width:0; /* prevent overflow in tight containers */
 }
 .card.featured{
   border-color:var(--brand-2);
@@ -62,6 +63,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 
 .tiername{ text-align:center; font-size:24px; font-weight:900; letter-spacing:.2px; }
 
+/* Pricing rows */
 .prices{
   display:flex; justify-content:center; gap:28px; align-items:flex-end; flex-wrap:wrap; text-align:center;
 }
@@ -109,6 +111,14 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
   color:#b39ddb; border:1px solid rgba(103,58,183,.33); padding:6px 10px; border-radius:999px;
   font-size:12px; font-weight:800; letter-spacing:.3px; text-transform:uppercase;
   margin:0 auto;
+}
+
+.addon{
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(0,150,136,.10); color:#8fe1d8;
+  border:1px dashed rgba(0,150,136,.45);
+  padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800;
+  margin:4px auto 0 auto;
 }
 
 .fine{color:#a3aab6; font-size:12px; margin-top:14px; text-align:center}
@@ -165,11 +175,11 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 
       <div class="prices" aria-label="Access pricing">
         <div class="price-block annual">
-          <div class="price"><span class="amt">$8</span><span class="per">/mo</span></div>
-          <div class="note">($96 billed annually)</div>
+          <div class="price"><span class="amt">$13</span><span class="per">/mo</span></div>
+          <div class="note">($156 billed annually)</div>
         </div>
         <div class="price-block monthly">
-          <div class="price"><span class="amt">$10</span><span class="per">/mo</span></div>
+          <div class="price"><span class="amt">$15</span><span class="per">/mo</span></div>
           <div class="note">billed monthly</div>
         </div>
       </div>
@@ -205,11 +215,11 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 
       <div class="prices" aria-label="Pro pricing">
         <div class="price-block annual">
-          <div class="price"><span class="amt">$17</span><span class="per">/mo</span></div>
-          <div class="note">($204 billed annually)</div>
+          <div class="price"><span class="amt">$20</span><span class="per">/mo</span></div>
+          <div class="note">($240 billed annually)</div>
         </div>
         <div class="price-block monthly">
-          <div class="price"><span class="amt">$20</span><span class="per">/mo</span></div>
+          <div class="price"><span class="amt">$23</span><span class="per">/mo</span></div>
           <div class="note">billed monthly</div>
         </div>
       </div>
@@ -266,6 +276,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
           <li><span class="chk">✓</span> Real-time push notifications</li>
           <li><span class="chk">✓</span> Heatmaps & performance suite</li>
         </ul>
+        <div class="addon">Add-on: API Automation $10/mo — <em>Coming Soon</em></div>
       </div>
 
       <div class="actions">
@@ -281,12 +292,12 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
 
       <div class="prices" aria-label="Master pricing">
         <div class="price-block annual">
-          <div class="price"><span class="amt">Custom</span></div>
-          <div class="note">Contact for pricing</div>
+          <div class="price"><span class="amt">$40</span><span class="per">/mo</span></div>
+          <div class="note">($480 billed annually)</div>
         </div>
         <div class="price-block monthly">
-          <div class="price"><span class="amt">Custom</span></div>
-          <div class="note">Contact for pricing</div>
+          <div class="price"><span class="amt">$45</span><span class="per">/mo</span></div>
+          <div class="note">billed monthly</div>
         </div>
       </div>
 
@@ -303,6 +314,7 @@ h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
           <li><span class="chk">✓</span> Priority real-time alerts</li>
           <li><span class="chk">✓</span> AI-driven insights & API access</li>
         </ul>
+        <div class="addon">Add-on: API Automation $10/mo — <em>Coming Soon</em></div>
       </div>
 
       <div class="actions">
