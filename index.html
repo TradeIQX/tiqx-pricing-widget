@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>TradeIQX Pricing</title>
 
-<!-- Brand font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -25,229 +24,194 @@
   --radius:16px;
   --gap:16px;
 }
-
 *{box-sizing:border-box}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font:16px/1.5 "Manrope", system-ui, Segoe UI, Roboto, Arial, sans-serif;
-}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 "Manrope",system-ui,Segoe UI,Roboto,Arial,sans-serif;}
 a{color:inherit;text-decoration:none}
-
 .wrap{max-width:1200px;margin:0 auto;padding:40px 20px}
-h2{margin:0 0 24px;font-size:28px;letter-spacing:.2px;text-align:center}
-
-.grid{display:grid; gap:var(--gap)}
-@media (min-width:1200px){ .grid{grid-template-columns:repeat(5, minmax(0,1fr));} }
-@media (min-width:900px) and (max-width:1199px){ .grid{grid-template-columns:repeat(3, minmax(0,1fr));} }
-@media (min-width:600px) and (max-width:899px){ .grid{grid-template-columns:repeat(2, minmax(0,1fr));} }
-@media (max-width:599px){ .grid{grid-template-columns:1fr;} }
-
-.card{
-  background:var(--panel);
-  border:1px solid #1f2937;
-  border-radius:var(--radius);
-  padding:22px;
-  display:flex; flex-direction:column; gap:14px;
-  min-width:0;
-}
-.card.featured{
-  border-color:var(--brand-2);
-  box-shadow:0 0 0 3px rgba(103,58,183,.22);
-}
-
-.tiername{ text-align:center; font-size:24px; font-weight:900; letter-spacing:.2px; }
-
-.prices{
-  display:flex; justify-content:center; gap:28px; align-items:flex-end; flex-wrap:wrap; text-align:center;
-}
-.price{display:flex; align-items:flex-end; gap:6px; justify-content:center}
-.price-block .amt{font-size:28px; font-weight:900}
-.price-block.monthly .amt{font-weight:400;}
-.per{color:var(--muted); font-size:14px}
-.note{color:var(--muted); font-size:12px; margin-top:-2px}
-
-.divider{height:1px; background:#223047; margin:8px 0 2px}
-
-.features{display:grid; gap:8px; text-align:center}
-.features .desc{color:#c9cfd8; font-size:14px; text-align:center; line-height:1.5}
-.features ul{list-style:none; margin:0; padding:0; display:grid; gap:8px}
-.features li{display:flex; align-items:flex-start; gap:10px; color:#d3d8df; text-align:left}
-.chk{
-  width:18px; height:18px; border-radius:4px; display:inline-grid; place-items:center;
-  background:rgba(0,150,136,.12); border:1px solid rgba(0,150,136,.35); font-size:12px;
-}
-
-.actions{display:grid; gap:10px; margin-top:auto}
-
-.btn{
-  display:inline-grid; place-items:center; padding:12px 14px; border-radius:10px;
-  background:#0f172a; border:1px solid #223047; font-weight:800;
-  transition:filter .15s ease, transform .05s ease;
-}
-.btn:hover{outline:2px solid var(--ring); filter:brightness(1.05)}
+h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
+.grid{display:grid;gap:var(--gap)}
+@media (min-width:1200px){.grid{grid-template-columns:repeat(5,minmax(0,1fr));}}
+@media (min-width:900px) and (max-width:1199px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media (min-width:600px) and (max-width:899px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media (max-width:599px){.grid{grid-template-columns:1fr;}}
+.card{background:var(--panel);border:1px solid #1f2937;border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0;}
+.card.featured{border-color:var(--brand-2);box-shadow:0 0 0 3px rgba(103,58,183,.22);}
+.tiername{text-align:center;font-size:24px;font-weight:900;letter-spacing:.2px;}
+.prices{display:flex;justify-content:center;gap:28px;align-items:flex-end;flex-wrap:wrap;text-align:center;}
+.price{display:flex;align-items:flex-end;gap:6px;justify-content:center}
+.price-block .amt{font-size:28px;font-weight:900}
+.price-block.monthly .amt{font-weight:400}
+.per{color:var(--muted);font-size:14px}
+.note{color:var(--muted);font-size:12px;margin-top:-2px}
+.divider{height:1px;background:#223047;margin:8px 0 2px}
+.features{display:grid;gap:8px}
+.features .desc{color:#c9cfd8;font-size:14px;text-align:center;line-height:1.5}
+.features ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.features li{display:flex;align-items:flex-start;gap:10px;color:#d3d8df;font-size:14px}
+.chk{width:18px;height:18px;border-radius:4px;display:inline-grid;place-items:center;background:rgba(0,150,136,.12);border:1px solid rgba(0,150,136,.35);font-size:12px}
+.actions{display:grid;gap:10px;margin-top:auto}
+.btn{display:inline-grid;place-items:center;padding:12px 14px;border-radius:10px;background:#0f172a;border:1px solid #223047;font-weight:800;transition:filter .15s ease,transform .05s ease}
+.btn:hover{outline:2px solid var(--ring);filter:brightness(1.05)}
 .btn:active{transform:translateY(1px)}
-
-.btn.primary{
-  border:1px solid transparent;
-  background:
-    linear-gradient(#0f172a,#0f172a) padding-box,
-    linear-gradient(180deg,var(--brand),var(--brand-2)) border-box;
-  color:var(--text);
-}
-
-.btn[disabled]{opacity:.55; cursor:not-allowed}
-
-.badge{
-  display:inline-flex; align-items:center; gap:6px; background:rgba(103,58,183,.12);
-  color:#b39ddb; border:1px solid rgba(103,58,183,.33); padding:6px 10px; border-radius:999px;
-  font-size:12px; font-weight:800; letter-spacing:.3px; text-transform:uppercase;
-  margin:0 auto;
-}
-
-.fine{color:#a3aab6; font-size:12px; margin-top:14px; text-align:center}
+.btn.primary{border:1px solid transparent;background:linear-gradient(#0f172a,#0f172a) padding-box,linear-gradient(180deg,var(--brand),var(--brand-2)) border-box;color:var(--text)}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(103,58,183,.12);color:#b39ddb;border:1px solid rgba(103,58,183,.33);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;margin:0 auto;}
+.fine{color:#a3aab6;font-size:12px;margin-top:14px;text-align:center}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h2>Know Before You Trade: Choose your plan</h2>
+<h2>Know Before You Trade: Choose your plan</h2>
+<div class="grid" role="list">
 
-  <div class="grid" role="list">
-
-    <!-- Starter -->
-    <article class="card" role="listitem">
-      <div class="tiername">Starter</div>
-
-      <div class="prices">
-        <div class="price-block annual">
-          <div class="price"><span class="amt">$3.75</span><span class="per">/mo</span></div>
-          <div class="note">($45 billed annually)</div>
-        </div>
-        <div class="price-block monthly">
-          <div class="price"><span class="amt">$5</span><span class="per">/mo</span></div>
-          <div class="note">billed monthly</div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-      <div class="features">
-        <div class="desc"><strong>Best for</strong> newcomers exploring market signals on a single ticker, twice daily.</div>
-      </div>
-
-      <div class="actions">
-        <a class="btn primary" href="#" target="_blank" rel="noopener">Subscribe Yearly</a>
-        <a class="btn" href="#" target="_blank" rel="noopener">Subscribe Monthly</a>
-      </div>
-    </article>
-
-    <!-- Access -->
-    <article class="card" role="listitem">
-      <div class="tiername">Access</div>
-
-      <div class="prices">
-        <div class="price-block annual">
-          <div class="price"><span class="amt">$13</span><span class="per">/mo</span></div>
-          <div class="note">($156 billed annually)</div>
-        </div>
-        <div class="price-block monthly">
-          <div class="price"><span class="amt">$15</span><span class="per">/mo</span></div>
-          <div class="note">billed monthly</div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-      <div class="features">
-        <div class="desc"><strong>Best for</strong> traders tracking up to 7 non-crypto tickers with scheduled insights twice a day.</div>
-      </div>
-
-      <div class="actions">
-        <a class="btn primary" href="#" target="_blank" rel="noopener">Subscribe Yearly</a>
-        <a class="btn" href="#" target="_blank" rel="noopener">Subscribe Monthly</a>
-      </div>
-    </article>
-
-    <!-- Pro -->
-    <article class="card featured" role="listitem">
-      <div class="tiername">Pro</div>
-      <span class="badge">Popular</span>
-
-      <div class="prices">
-        <div class="price-block annual">
-          <div class="price"><span class="amt">$20</span><span class="per">/mo</span></div>
-          <div class="note">($240 billed annually)</div>
-        </div>
-        <div class="price-block monthly">
-          <div class="price"><span class="amt">$23</span><span class="per">/mo</span></div>
-          <div class="note">billed monthly</div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-      <div class="features">
-        <div class="desc"><strong>Best for</strong> active traders following multi-sector and crypto tickers with 3× daily updates.</div>
-      </div>
-
-      <div class="actions">
-        <a class="btn primary" href="#" target="_blank" rel="noopener">Subscribe Yearly</a>
-        <a class="btn" href="#" target="_blank" rel="noopener">Subscribe Monthly</a>
-      </div>
-    </article>
-
-    <!-- Elite -->
-    <article class="card" role="listitem">
-      <div class="tiername">Elite</div>
-
-      <div class="prices">
-        <div class="price-block annual">
-          <div class="price"><span class="amt">$30</span><span class="per">/mo</span></div>
-          <div class="note">($360 billed annually)</div>
-        </div>
-        <div class="price-block monthly">
-          <div class="price"><span class="amt">$35</span><span class="per">/mo</span></div>
-          <div class="note">billed monthly</div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-      <div class="features">
-        <div class="desc"><strong>Best for</strong> serious traders managing up to 40 tickers with real-time, live signal delivery.</div>
-      </div>
-
-      <div class="actions">
-        <a class="btn primary" href="#" target="_blank" rel="noopener">Subscribe Yearly</a>
-        <a class="btn" href="#" target="_blank" rel="noopener">Subscribe Monthly</a>
-      </div>
-    </article>
-
-    <!-- Master -->
-    <article class="card" role="listitem">
-      <div class="tiername">Master</div>
-
-      <div class="prices">
-        <div class="price-block annual">
-          <div class="price"><span class="amt">$40</span><span class="per">/mo</span></div>
-          <div class="note">($480 billed annually)</div>
-        </div>
-        <div class="price-block monthly">
-          <div class="price"><span class="amt">$45</span><span class="per">/mo</span></div>
-          <div class="note">billed monthly</div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-      <div class="features">
-        <div class="desc"><strong>Best for</strong> professionals and funds needing unlimited tickers, AI insights, and API-level access.</div>
-      </div>
-
-      <div class="actions">
-        <a class="btn primary" href="mailto:hello@tradeiqx.com?subject=Master%20Plan%20Inquiry" target="_blank" rel="noopener">Contact Sales</a>
-      </div>
-    </article>
-
+<!-- Starter -->
+<article class="card" role="listitem">
+  <div class="tiername">Starter</div>
+  <div class="prices">
+    <div class="price-block annual">
+      <div class="price"><span class="amt">$3.75</span><span class="per">/mo</span></div>
+      <div class="note">($45 billed annually)</div>
+    </div>
+    <div class="price-block monthly">
+      <div class="price"><span class="amt">$5</span><span class="per">/mo</span></div>
+      <div class="note">billed monthly</div>
+    </div>
   </div>
+  <div class="divider"></div>
+  <div class="features">
+    <div class="desc"><strong>Best for</strong> newcomers exploring market signals on a single ticker, twice daily.</div>
+    <ul>
+      <li><span class="chk">✓</span> 1 non-crypto ticker</li>
+      <li><span class="chk">✓</span> Pre-market & End-of-day (2×/day)</li>
+      <li><span class="chk">✓</span> Scheduled push notifications</li>
+      <li><span class="chk">✓</span> 5-day trial • Ad-supported</li>
+    </ul>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
+    <a class="btn" href="#" target="_blank">Subscribe Monthly</a>
+  </div>
+</article>
 
-  <p class="fine">Prices in USD. Cancel anytime.</p>
+<!-- Access -->
+<article class="card" role="listitem">
+  <div class="tiername">Access</div>
+  <div class="prices">
+    <div class="price-block annual">
+      <div class="price"><span class="amt">$13</span><span class="per">/mo</span></div>
+      <div class="note">($156 billed annually)</div>
+    </div>
+    <div class="price-block monthly">
+      <div class="price"><span class="amt">$15</span><span class="per">/mo</span></div>
+      <div class="note">billed monthly</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="features">
+    <div class="desc"><strong>Best for</strong> traders tracking up to 7 non-crypto tickers with consistent daily insight.</div>
+    <ul>
+      <li><span class="chk">✓</span> Up to 7 non-crypto tickers</li>
+      <li><span class="chk">✓</span> Pre-market & End-of-day (2×/day)</li>
+      <li><span class="chk">✓</span> Scheduled push notifications</li>
+      <li><span class="chk">✓</span> Basic performance reports</li>
+    </ul>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
+    <a class="btn" href="#" target="_blank">Subscribe Monthly</a>
+  </div>
+</article>
+
+<!-- Pro -->
+<article class="card featured" role="listitem">
+  <div class="tiername">Pro</div>
+  <span class="badge">Popular</span>
+  <div class="prices">
+    <div class="price-block annual">
+      <div class="price"><span class="amt">$20</span><span class="per">/mo</span></div>
+      <div class="note">($240 billed annually)</div>
+    </div>
+    <div class="price-block monthly">
+      <div class="price"><span class="amt">$23</span><span class="per">/mo</span></div>
+      <div class="note">billed monthly</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="features">
+    <div class="desc"><strong>Best for</strong> active traders managing multi-asset portfolios and crypto signals.</div>
+    <ul>
+      <li><span class="chk">✓</span> Up to 15 tickers (incl. 3 crypto)</li>
+      <li><span class="chk">✓</span> Pre-market, Midday & End-of-day (3×/day)</li>
+      <li><span class="chk">✓</span> Scheduled push notifications</li>
+      <li><span class="chk">✓</span> Weekly digest across indices & crypto</li>
+    </ul>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
+    <a class="btn" href="#" target="_blank">Subscribe Monthly</a>
+  </div>
+</article>
+
+<!-- Elite -->
+<article class="card" role="listitem">
+  <div class="tiername">Elite</div>
+  <div class="prices">
+    <div class="price-block annual">
+      <div class="price"><span class="amt">$30</span><span class="per">/mo</span></div>
+      <div class="note">($360 billed annually)</div>
+    </div>
+    <div class="price-block monthly">
+      <div class="price"><span class="amt">$35</span><span class="per">/mo</span></div>
+      <div class="note">billed monthly</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="features">
+    <div class="desc"><strong>Best for</strong> advanced traders managing diversified portfolios in real time.</div>
+    <ul>
+      <li><span class="chk">✓</span> Up to 40 tickers (incl. crypto)</li>
+      <li><span class="chk">✓</span> Live & instant signal delivery</li>
+      <li><span class="chk">✓</span> Real-time push notifications</li>
+      <li><span class="chk">✓</span> Heatmaps & performance suite</li>
+    </ul>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
+    <a class="btn" href="#" target="_blank">Subscribe Monthly</a>
+  </div>
+</article>
+
+<!-- Master -->
+<article class="card" role="listitem">
+  <div class="tiername">Master</div>
+  <div class="prices">
+    <div class="price-block annual">
+      <div class="price"><span class="amt">$40</span><span class="per">/mo</span></div>
+      <div class="note">($480 billed annually)</div>
+    </div>
+    <div class="price-block monthly">
+      <div class="price"><span class="amt">$45</span><span class="per">/mo</span></div>
+      <div class="note">billed monthly</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="features">
+    <div class="desc"><strong>Best for</strong> professional traders and funds needing unlimited coverage and automation.</div>
+    <ul>
+      <li><span class="chk">✓</span> Unlimited tickers & full-market coverage</li>
+      <li><span class="chk">✓</span> Priority real-time delivery</li>
+      <li><span class="chk">✓</span> AI-driven insights & analytics</li>
+      <li><span class="chk">✓</span> API access for automation</li>
+    </ul>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
+    <a class="btn" href="#" target="_blank">Subscribe Monthly</a>
+  </div>
+</article>
+
+</div>
+<p class="fine">Prices in USD. Cancel anytime.</p>
 </div>
 </body>
 </html>
