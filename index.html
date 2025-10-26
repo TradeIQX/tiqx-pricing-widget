@@ -14,16 +14,19 @@
 
 <style>
 :root{
-  /* Exact app palette for 1:1 parity */
-  --bg:#0D1B2A;         /* background / nav */
-  --panel:#111A27;      /* panels */
-  --text:#FFFFFF;       /* text */
-  --muted:#4A5568;      /* muted text */
-  --brand:#009688;      /* teal CTA */
-  --brand-2:#673AB7;    /* purple accent */
+  /* Brand palette */
+  --bg:#0D1B2A;
+  --panel:#111A27;
+  --text:#FFFFFF;
+  --muted:#4A5568;
+  --brand:#009688;
+  --brand-2:#673AB7;
   --ring:rgba(0,150,136,.33);
+
+  /* Layout tokens */
   --radius:16px;
   --gap:16px;
+  --card-basis:300px;   /* JS will overwrite based on container width */
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 "Manrope",system-ui,Segoe UI,Roboto,Arial,sans-serif;}
@@ -31,23 +34,30 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:40px 20px}
 h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 
-/* Responsive grid */
-.grid{display:grid;gap:var(--gap)}
-@media (min-width:1200px){.grid{grid-template-columns:repeat(5,minmax(0,1fr));}}
-@media (min-width:900px) and (max-width:1199px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
-@media (min-width:600px) and (max-width:899px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
-@media (max-width:599px){.grid{grid-template-columns:1fr;}}
+/* Responsive grid controlled by --card-basis */
+.grid{
+  display:grid;
+  gap:var(--gap);
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-basis), 1fr));
+  align-items:stretch;
+}
 
 /* Cards */
 .card{
   background:var(--panel);
-  border:1px solid #223047; /* subtle vs bg */
+  border:1px solid #223047;
   border-radius:var(--radius);
   padding:22px;
   display:flex;
   flex-direction:column;
   gap:14px;
   min-width:0;
+
+  /* Keep visual width consistent even in super-wide containers */
+  max-width:var(--card-basis);
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
   position:relative;
 }
 .card.featured{
@@ -56,22 +66,16 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 }
 .tiername{text-align:center;font-size:24px;font-weight:900;letter-spacing:.2px;}
 
-/* Prices — FORCE VERTICAL STACK ALWAYS */
+/* Prices — force vertical stack always */
 .prices{
   display:flex;
-  flex-direction:column !important; /* key: stack annual over monthly at any width */
+  flex-direction:column !important;
   justify-content:flex-start;
   align-items:center;
-  gap:10px;                 /* space between annual and monthly blocks */
+  gap:10px;
   text-align:center;
 }
-.price-block{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  min-width:0;
-}
+.price-block{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-width:0;}
 .price{display:flex;align-items:flex-end;gap:6px;justify-content:center}
 .price-block .amt{font-size:28px;font-weight:900}
 .price-block.monthly .amt{font-weight:400}
@@ -123,7 +127,7 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 <body>
 <div class="wrap">
 <h2>Know Before You Trade: Choose your plan</h2>
-<div class="grid" role="list">
+<div class="grid" role="list" id="pricing-grid">
 
 <!-- STARTER -->
 <article class="card" role="listitem">
@@ -275,5 +279,50 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 <p class="fine">TradeIQX.com provides market insights for informational purposes only and does not provide financial or investment advice.</p>
 <p class="fine">Prices in USD. Cancel anytime.</p>
 </div>
+
+<script>
+/*
+  Goal: keep tier columns a consistent, readable width that fits the container.
+  Strategy:
+    - Aim for a target card width (320px), but clamp between 260–340px.
+    - Compute the max number of columns that can fit given container width + gap.
+    - Derive the per-card width and write it to --card-basis.
+*/
+(function(){
+  const grid = document.getElementById('pricing-grid');
+  if (!grid) return;
+
+  const GAP = 16;                     // must match --gap
+  const MIN = 260;                    // minimum comfortable card width
+  const TARGET = 320;                 // ideal visual width
+  const MAX = 340;                    // don't let cards get too wide
+  const MAX_COLS = 5;                 // you have 5 tiers total
+
+  function setCardWidth(){
+    const container = grid.clientWidth || grid.getBoundingClientRect().width || 1200;
+    // Try to fit as many columns as possible up to MAX_COLS without going below MIN
+    // columns = min(MAX_COLS, floor((container + GAP) / (TARGET + GAP)))
+    let cols = Math.min(MAX_COLS, Math.max(1, Math.floor((container + GAP) / (TARGET + GAP))));
+    // If computed width would drop below MIN, reduce columns until width >= MIN
+    let width = (container - (cols - 1) * GAP) / cols;
+    while (cols > 1 && width < MIN) {
+      cols--;
+      width = (container - (cols - 1) * GAP) / cols;
+    }
+    // Clamp final width
+    const basis = Math.max(MIN, Math.min(width, MAX));
+    grid.style.setProperty('--card-basis', basis.toFixed(2) + 'px');
+  }
+
+  // Initial + responsive
+  setCardWidth();
+  window.addEventListener('resize', setCardWidth);
+
+  // Extra: recalc after fonts load (to avoid late shifts)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(setCardWidth).catch(()=>{});
+  }
+})();
+</script>
 </body>
 </html>
