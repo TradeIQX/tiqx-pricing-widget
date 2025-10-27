@@ -29,11 +29,23 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 "Manrope",sys
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:40px 20px}
 h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
+
+/* ---------------- GRID: exact 5 columns from >=900px ---------------- */
 .grid{display:grid;gap:var(--gap)}
-@media (min-width:1200px){.grid{grid-template-columns:repeat(5,minmax(0,1fr));}}
-@media (min-width:900px) and (max-width:1199px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
-@media (min-width:600px) and (max-width:899px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
-@media (max-width:599px){.grid{grid-template-columns:1fr;}}
+/* phones */
+@media (max-width:599px){
+  .grid{grid-template-columns:1fr;}
+}
+/* small tablets */
+@media (min-width:600px) and (max-width:899px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+/* laptops & up: ALWAYS 5 columns on one row */
+@media (min-width:900px){
+  .grid{grid-template-columns:repeat(5,minmax(0,1fr));}
+}
+
+/* ---------------- CARDS ---------------- */
 .card{
   background:var(--panel);
   border:1px solid #1f2937;
@@ -42,52 +54,87 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
   display:flex;
   flex-direction:column;
   gap:14px;
-  min-width:0;
+  min-width:0;             /* allow shrinking */
   position:relative;
 }
+.card *{min-width:0;}       /* avoid min-content blowups inside */
 .card.featured{
   border-color:var(--brand-2);
   box-shadow:0 0 0 3px rgba(103,58,183,.22);
 }
-.tiername{text-align:center;font-size:24px;font-weight:900;letter-spacing:.2px;}
-.prices{display:flex;justify-content:center;gap:28px;align-items:flex-end;flex-wrap:wrap;text-align:center;}
-.price{display:flex;align-items:flex-end;gap:6px;justify-content:center}
-.price-block .amt{font-size:28px;font-weight:900}
+.tiername{
+  text-align:center;
+  font-size:clamp(18px,1.8vw,24px);
+  font-weight:900;
+  letter-spacing:.2px;
+}
+
+/* ---------------- PRICES: force vertical stack, no wrap ---------------- */
+.prices{
+  display:flex;
+  flex-direction:column !important; /* annual over monthly at any width */
+  align-items:center;
+  justify-content:flex-start;
+  gap:10px;
+  text-align:center;
+  flex-wrap:nowrap;                  /* prevent side-by-side */
+}
+.price-block{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.price{
+  display:flex;
+  align-items:flex-end;
+  gap:6px;
+  justify-content:center
+}
+.price-block .amt{font-size:clamp(22px,2.1vw,28px);font-weight:900}
 .price-block.monthly .amt{font-weight:400}
-.per{color:var(--muted);font-size:14px}
+.per{color:var(--muted);font-size:clamp(12px,1.2vw,14px)}
 .note{color:var(--muted);font-size:12px;margin-top:-2px}
 .divider{height:1px;background:#223047;margin:8px 0 2px}
+
+/* ---------------- FEATURES ---------------- */
 .features{display:grid;gap:8px}
 .features .desc{color:#c9cfd8;font-size:14px;text-align:center;line-height:1.5;margin-bottom:8px}
 .features ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .features li{display:flex;align-items:flex-start;gap:10px;color:#d3d8df;font-size:14px}
-.chk{width:18px;height:18px;border-radius:4px;display:inline-grid;place-items:center;background:rgba(0,150,136,.12);border:1px solid rgba(0,150,136,.35);font-size:12px}
+.chk{
+  width:18px;height:18px;border-radius:4px;display:inline-grid;place-items:center;
+  background:rgba(0,150,136,.12);border:1px solid rgba(0,150,136,.35);font-size:12px
+}
+
+/* ---------------- BUTTONS: allow wrapping to shrink width ---------------- */
 .actions{display:grid;gap:10px;margin-top:auto}
 .btn{
   display:inline-grid;place-items:center;padding:12px 14px;border-radius:10px;
   background:#0f172a;border:1px solid #223047;font-weight:700;text-align:center;
-  white-space:nowrap;transition:filter .15s ease,transform .05s ease;
+  white-space:normal; /* was nowrap: let text wrap so card can narrow */
+  transition:filter .15s ease,transform .05s ease;
 }
 .btn:hover{outline:2px solid var(--ring);filter:brightness(1.05)}
 .btn:active{transform:translateY(1px)}
-.btn.primary{border:1px solid transparent;background:linear-gradient(#0f172a,#0f172a) padding-box,linear-gradient(180deg,var(--brand),var(--brand-2)) border-box;color:var(--text);font-size:15px;}
+.btn.primary{
+  border:1px solid transparent;
+  background:
+    linear-gradient(#0f172a,#0f172a) padding-box,
+    linear-gradient(180deg,var(--brand),var(--brand-2)) border-box;
+  color:var(--text);font-size:15px;
+}
 .btn.secondary{font-size:13px;}
 .btn[disabled]{opacity:.55;cursor:not-allowed}
+
+/* ---------------- BADGE ---------------- */
 .badge{
-  position:absolute;
-  top:-18px;
-  left:50%;
-  transform:translateX(-50%);
+  position:absolute;top:-18px;left:50%;transform:translateX(-50%);
   background:linear-gradient(180deg,var(--brand-2),#8b5cf6);
-  color:#fff;
-  padding:5px 12px;
-  border-radius:999px;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.3px;
-  text-transform:uppercase;
-  box-shadow:0 2px 6px rgba(0,0,0,0.3);
+  color:#fff;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:800;
+  letter-spacing:.3px;text-transform:uppercase;box-shadow:0 2px 6px rgba(0,0,0,0.3);
 }
+
+/* ---------------- FINE PRINT ---------------- */
 .fine{color:#a3aab6;font-size:12px;margin-top:14px;text-align:center}
 </style>
 </head>
