@@ -15,7 +15,7 @@
 <style>
 :root{
   --bg:#0d1b2a;
-  --panel:#111a27;
+  --panel:#111a27;         /* use #1A1F2B if you prefer the slightly grayer panel */
   --text:#eef2f7;
   --muted:#98a2b3;
   --brand:#009688;
@@ -32,15 +32,12 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 
 /* ---------------- GRID: exact 5 columns from >=900px ---------------- */
 .grid{display:grid;gap:var(--gap)}
-/* phones */
 @media (max-width:599px){
   .grid{grid-template-columns:1fr;}
 }
-/* small tablets */
 @media (min-width:600px) and (max-width:899px){
   .grid{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
-/* laptops & up: ALWAYS 5 columns on one row */
 @media (min-width:900px){
   .grid{grid-template-columns:repeat(5,minmax(0,1fr));}
 }
@@ -54,10 +51,10 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
   display:flex;
   flex-direction:column;
   gap:14px;
-  min-width:0;             /* allow shrinking */
+  min-width:0;
   position:relative;
 }
-.card *{min-width:0;}       /* avoid min-content blowups inside */
+.card *{min-width:0;}
 .card.featured{
   border-color:var(--brand-2);
   box-shadow:0 0 0 3px rgba(103,58,183,.22);
@@ -72,24 +69,19 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
 /* ---------------- PRICES: force vertical stack, no wrap ---------------- */
 .prices{
   display:flex;
-  flex-direction:column !important; /* annual over monthly at any width */
+  flex-direction:column !important;
   align-items:center;
   justify-content:flex-start;
   gap:10px;
   text-align:center;
-  flex-wrap:nowrap;                  /* prevent side-by-side */
+  flex-wrap:nowrap;
 }
 .price-block{
   display:flex;
   flex-direction:column;
   align-items:center;
 }
-.price{
-  display:flex;
-  align-items:flex-end;
-  gap:6px;
-  justify-content:center
-}
+.price{display:flex;align-items:flex-end;gap:6px;justify-content:center}
 .price-block .amt{font-size:clamp(22px,2.1vw,28px);font-weight:900}
 .price-block.monthly .amt{font-weight:400}
 .per{color:var(--muted);font-size:clamp(12px,1.2vw,14px)}
@@ -106,12 +98,12 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
   background:rgba(0,150,136,.12);border:1px solid rgba(0,150,136,.35);font-size:12px
 }
 
-/* ---------------- BUTTONS: allow wrapping to shrink width ---------------- */
+/* ---------------- BUTTONS ---------------- */
 .actions{display:grid;gap:10px;margin-top:auto}
 .btn{
   display:inline-grid;place-items:center;padding:12px 14px;border-radius:10px;
   background:#0f172a;border:1px solid #223047;font-weight:700;text-align:center;
-  white-space:normal; /* was nowrap: let text wrap so card can narrow */
+  white-space:normal; /* allow wrap so cards can narrow */
   transition:filter .15s ease,transform .05s ease;
 }
 .btn:hover{outline:2px solid var(--ring);filter:brightness(1.05)}
@@ -167,8 +159,13 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
     </ul>
   </div>
   <div class="actions">
-    <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
-    <a class="btn secondary" href="#" target="_blank">Subscribe Monthly</a>
+    <!-- Checkout routes for Starter (changed from /signup to /checkout) -->
+    <a class="btn primary"
+       href="https://app.tradeiqx.com/checkout?plan=starter&cycle=annual"
+       target="_blank" rel="noopener noreferrer">Subscribe Yearly</a>
+    <a class="btn secondary"
+       href="https://app.tradeiqx.com/checkout?plan=starter&cycle=monthly"
+       target="_blank" rel="noopener noreferrer">Subscribe Monthly</a>
   </div>
 </article>
 
@@ -196,14 +193,18 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
     </ul>
   </div>
   <div class="actions">
-    <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
-    <a class="btn secondary" href="#" target="_blank">Subscribe Monthly</a>
+    <a class="btn primary"
+       href="https://app.tradeiqx.com/checkout?plan=access&cycle=annual"
+       target="_blank" rel="noopener noreferrer">Subscribe Yearly</a>
+    <a class="btn secondary"
+       href="https://app.tradeiqx.com/checkout?plan=access&cycle=monthly"
+       target="_blank" rel="noopener noreferrer">Subscribe Monthly</a>
   </div>
 </article>
 
 <!-- PRO -->
 <article class="card featured" role="listitem">
-  <span class="badge">Popular</span>
+  <span class="badge" aria-label="Most popular">Popular</span>
   <div class="tiername">Pro</div>
   <div class="prices">
     <div class="price-block annual">
@@ -226,8 +227,12 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
     </ul>
   </div>
   <div class="actions">
-    <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
-    <a class="btn secondary" href="#" target="_blank">Subscribe Monthly</a>
+    <a class="btn primary"
+       href="https://app.tradeiqx.com/checkout?plan=pro&cycle=annual"
+       target="_blank" rel="noopener noreferrer">Subscribe Yearly</a>
+    <a class="btn secondary"
+       href="https://app.tradeiqx.com/checkout?plan=pro&cycle=monthly"
+       target="_blank" rel="noopener noreferrer">Subscribe Monthly</a>
   </div>
 </article>
 
@@ -255,8 +260,12 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
     </ul>
   </div>
   <div class="actions">
-    <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
-    <a class="btn secondary" href="#" target="_blank">Subscribe Monthly</a>
+    <a class="btn primary"
+       href="https://app.tradeiqx.com/checkout?plan=elite&cycle=annual"
+       target="_blank" rel="noopener noreferrer">Subscribe Yearly</a>
+    <a class="btn secondary"
+       href="https://app.tradeiqx.com/checkout?plan=elite&cycle=monthly"
+       target="_blank" rel="noopener noreferrer">Subscribe Monthly</a>
   </div>
 </article>
 
@@ -284,13 +293,16 @@ h2{text-align:center;margin:0 0 24px;font-size:28px;letter-spacing:.2px}
     </ul>
   </div>
   <div class="actions">
-    <a class="btn primary" href="#" target="_blank">Subscribe Yearly</a>
-    <a class="btn secondary" href="#" target="_blank">Subscribe Monthly</a>
+    <a class="btn primary"
+       href="https://app.tradeiqx.com/checkout?plan=master&cycle=annual"
+       target="_blank" rel="noopener noreferrer">Subscribe Yearly</a>
+    <a class="btn secondary"
+       href="https://app.tradeiqx.com/checkout?plan=master&cycle=monthly"
+       target="_blank" rel="noopener noreferrer">Subscribe Monthly</a>
   </div>
 </article>
 
 </div>
-<p class="fine">TradeIQX.com provides market insights for informational purposes only and does not provide financial or investment advice.</p>
 <p class="fine">Prices in USD. Cancel anytime.</p>
 </div>
 </body>
